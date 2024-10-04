@@ -29,5 +29,105 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+ja:
+  attributes:
+    user:
+      id: ID
+      email: Eメール
+      password_digest: パスワード
+      name: 利用者名
+      occupation_id: 職種
+      profile_image: プロフィール画像
+      gender: 性別
+      introduction: 紹介文
+      created_at: 登録日時
+      updated_at: 更新日時
+
+  occupation:
+    id: ID
+    name: 職種名
+    created_at: 登録日時
+    updated_at: 更新日時
+
+  category:
+    id: ID
+    name: カテゴリー名
+    category_image: カテゴリー画像
+    created_at: 登録日時
+    updated_at: 更新日時
+
+  group:
+    id: ID
+    name: グループ名
+    group_image: グループプロフィール画像
+    introduction: 紹介文
+    category_id: カテゴリーID
+    created_at: 登録日時
+    updated_at: 更新日時
+
+  goods_comment:
+    id: ID
+    comment: コメント
+    goods_review_id: 商品レビュー
+    user_id: ユーザーID
+    evaluation: 評価
+    created_at: 登録日時
+    updated_at: 更新日時
+
+  store_comment:
+    id: ID
+    comment: コメント
+    store_review_id: 店舗レビューID
+    user_id: ユーザーID
+    evaluation: 評価
+    created_at: 登録日時
+    updated_at: 更新日時
+
+    chat:
+      id: ID
+      group_id: グループID
+      user_id: ユーザーID
+      created_at: 登録日時
+      updated_at: 更新日時
+
+    store_reivew:
+      id: ID
+      title: レビュー名
+      review_image: レビュー画像
+      review: レビュー本文
+      evaluation: 評価
+      spot: 場所
+      tell: 電話番号
+      category_id: カテゴリーID
+      created_at: 登録日時
+      updated_at: 更新日時
+            
+
+
+    goods_review:
+      id: ID
+      title: レビュー名
+      review_image: レビュー画像
+      review: レビュー本文
+      evaluation: 評価
+      price: 価格
+      category_id: カテゴリーID
+      user_id: ユーザーID
+      group_id: グループID
+      created_at: 登録日時
+      updated_at: 更新日時
+      
+    message:
+      id: ID
+      message: メッセージ
+      group_id: グループID
+      user_id: ユーザーID
+      created_at: 登録日時
+      updated_at: 更新日時
+    
+    select_category:
+      id: ID
+      user_id: ユーザーID
+      category_id: カテゴリーID
+      created_at: 登録日時
+      updated_at: 更新日時

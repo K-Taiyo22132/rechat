@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @select_category.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @select_category.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_select_category_path(@select_category) %> |
+<%= link_to 'Back', select_categories_path %>

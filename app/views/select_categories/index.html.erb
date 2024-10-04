@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Select Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @select_categories.each do |select_category| %>
+      <tr>
+        <td><%= select_category.user_id %></td>
+        <td><%= select_category.category_id %></td>
+        <td><%= link_to 'Show', select_category %></td>
+        <td><%= link_to 'Edit', edit_select_category_path(select_category) %></td>
+        <td><%= link_to 'Destroy', select_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Select Category', new_select_category_path %>

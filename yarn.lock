@@ -3558,6 +3558,15 @@ has@^1.0.0:
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.4.tgz#2eb2860e000011dae4f1406a86fe80e530fb2ec6"
   integrity sha512-qdSAmqLF6209RFj4VVItywPMbm3vWylknmB3nvNiUIs72xAimcM8nVYxYr7ncvZq5qzk9MKIZR8ijqD/1QuYjQ==
 
+hash-base@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/hash-base/-/hash-base-3.1.0.tgz"
+  integrity sha512-1nmYp/rhMDiE7AYkDw+lLwlAzz0AntGIe51F3RfFfEqyQ3feY2eI/NcwC6umIQVOASPMsWJLJScWKSSvzL9IVA==
+  dependencies:
+    inherits "^2.0.4"
+    readable-stream "^3.6.0"
+    safe-buffer "^5.2.0"
+
 hash-base@^3.0.0, hash-base@~3.0:
   version "3.0.4"
   resolved "https://registry.npmjs.org/hash-base/-/hash-base-3.0.4.tgz"

@@ -12,5 +12,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+
   belongs_to :occupation
+  validates :occupation, presence: true
+
 end

@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = Group.new(group_attributes)
 
     respond_to do |format|
       if @group.save
@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
-      if @group.update(group_params)
+      if @group.update(group_attributes)
         format.html { redirect_to @group, notice: "Group was successfully updated." }
         format.json { render :show, status: :ok, location: @group }
       else
@@ -57,6 +57,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def send_image
+    group = Group.find(params[:id])
+    send_data(group.group_image,disposition: :inline)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
@@ -66,5 +70,10 @@ class GroupsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def group_params
       params.require(:group).permit(:name, :group_image, :introduction, :category_id)
+    end
+    def group_attributes
+      {
+        name: group_params[:name],group_image: group_params[:group_image].read
+      }
     end
 end

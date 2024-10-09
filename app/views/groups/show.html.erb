@@ -7,7 +7,7 @@
 
 <p>
   <strong>Group image:</strong>
-  <%= @group.group_image %>
+  <%= @group.image_tag(url_for(image_of_groups_path(@group)),size: '100x100') %>
 </p>
 
 <p>

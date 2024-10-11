@@ -8,19 +8,19 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'profile'
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
   get '/image_of_categories/:id', to: 'categories#send_image', as: 'image_of_categories'
 
-=======
+# =======
   get'/image_of_groups/:id',to: 'groups#send_image', as: 'image_of_groups'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-<<<<<<< HEAD
+# <<<<<<< HEAD
   
-=======
->>>>>>> 6d2642ec21d6cd726337e05ef6d45fc049298ce9
->>>>>>> b14de08cbb4880e9fa2ec4bbed57ac09f08f9d62
+# =======
+# >>>>>>> 6d2642ec21d6cd726337e05ef6d45fc049298ce9
+# >>>>>>> b14de08cbb4880e9fa2ec4bbed57ac09f08f9d62
 end
   

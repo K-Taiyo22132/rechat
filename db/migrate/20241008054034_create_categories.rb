@@ -4,7 +4,7 @@ class CreateCategories < ActiveRecord::Migration[6.1]
       t.string :name
       t.binary :category_image
 
-      t.timestampsra
+      t.timestamps
     end
   end
 end

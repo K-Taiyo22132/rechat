@@ -22,5 +22,8 @@
     <%= form.label :name, 'なまえ' %>
     <%= form.text_field :name %>
 
+    <%= form.label :occupation, '職種' %>
+    <%= form.select :occupation_id,Occupation.all.map { |occupation|[occupation.name, occupation.id]} %>
+
     <%= form.submit '登録' %>
 <% end %>

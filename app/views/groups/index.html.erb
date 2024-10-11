@@ -17,7 +17,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.group_image %></td>
+        <td><%= image_tag(url_for(image_of_groups_path(group)),size:'100x100') %></td> 
         <td><%= group.introduction %></td>
         <td><%= group.category_id %></td>
         <td><%= link_to 'Show', group %></td>

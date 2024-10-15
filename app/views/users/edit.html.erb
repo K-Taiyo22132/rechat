@@ -1,0 +1,20 @@
+<h1>プロフィール作成</h1>
+<%= form_with(model: @user) do |form| %>
+    <% if @user.errors.any? %>
+        <strong><%= @user.errors.count %>個のエラーがあります</strong>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end%>
+    <%= form.label "プロフィール画像" %>
+    <%= form.file_field :profile_image %>
+    <%= form.label :name, 'ユーザー名' %>
+    <%= form.text_field :name %>
+    <%= form.label :introduction, '紹介文' %>
+    <%= form.text_field :introduction %>
+
+
+    <%= form.submit '更新' %>
+<% end %>

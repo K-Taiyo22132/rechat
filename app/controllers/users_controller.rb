@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :destroy]
+  before_action :require_login, only: [:show, :destroy, :edit, :update]
 
   def new
     @user = User.new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_update_attributes)
-      redirect_to profile_path(@user),notice: "User was successfully updated."
+      redirect_to new_select_category_path(@select_category),notice: "User was successfully updated."
     else
       render 'edit'
     end

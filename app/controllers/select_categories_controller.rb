@@ -25,7 +25,7 @@ class SelectCategoriesController < ApplicationController
 
     respond_to do |format|
       if @select_category.save
-        format.html { redirect_to @select_category, notice: "Select category was successfully created." }
+        format.html { redirect_to groups_path, notice: "Select category was successfully created." }
         format.json { render :show, status: :created, location: @select_category }
       else
         format.html { render :new, status: :unprocessable_entity }

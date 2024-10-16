@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :store_reviews
+  resources :chats
   resources :categories
   resources :select_categories
   resources :groups

@@ -17,7 +17,17 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @group.category_id %>
+  <%= @group.category.name %>
+</p>
+
+<p>
+  <strong>Chat</strong>
+  <%= link_to 'チャット', chats_path%>
+</p>
+
+<p>
+  <strong>Review</strong>
+  <%= link_to 'レビュー', store_reviews_path%>
 </p>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

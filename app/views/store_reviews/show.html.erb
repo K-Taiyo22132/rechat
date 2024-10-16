@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @store_review.title %>
+</p>
+
+<p>
+  <strong>Review image:</strong>
+  <%= @store_review.review_image %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @store_review.review %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @store_review.evaluation %>
+</p>
+
+<p>
+  <strong>Spot:</strong>
+  <%= @store_review.spot %>
+</p>
+
+<p>
+  <strong>Tell:</strong>
+  <%= @store_review.tell %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @store_review.category_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @store_review.user_id %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @store_review.group_id %>
+</p>
+
+<%= link_to 'Edit', edit_store_review_path(@store_review) %> |
+<%= link_to 'Back', store_reviews_path %>

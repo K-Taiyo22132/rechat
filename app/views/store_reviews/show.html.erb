@@ -7,7 +7,8 @@
 
 <p>
   <strong>Review image:</strong>
-  <%= @store_review.review_image %>
+  <%# <%= @store_review.review_image %>
+  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100') %>
 </p>
 
 <p>

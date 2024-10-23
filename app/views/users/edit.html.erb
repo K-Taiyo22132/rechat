@@ -10,6 +10,7 @@
     <% end%>
     <%= form.label "プロフィール画像" %>
     <%= form.file_field :profile_image %>
+    <%= image_tag(url_for(image_of_users_path(@user)),size:'100x100') %>
     <%= form.label :name, 'ユーザー名' %>
     <%= form.text_field :name %>
     <%= form.label :introduction, '紹介文' %>

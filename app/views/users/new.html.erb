@@ -11,19 +11,21 @@
     <% end%>
 
     <p><%= form.label :email, 'メールアドレス' %>
-    <%= form.email_field :email %></p>
+    <%= form.email_field :email, class: "form-control" %></p>
 
     <p><%= form.label :password, 'パスワード' %>
-    <%= form.password_field :password %></p>
+    <%= form.password_field :password, class: "form-control" %></p>
 
     <p><%= form.label :password_confirmation, 'パスワード（確認）' %>
-    <%= form.password_field :password_confirmation %></p>
+    <%= form.password_field :password_confirmation, class: "form-control" %></p>
 
     <%= form.label :name, 'なまえ' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
 
     <%= form.label :occupation, '職種' %>
-    <%= form.select :occupation_id,Occupation.all.map { |occupation|[occupation.name, occupation.id]} %>
-
-    <%= form.submit '登録' %>
+    <%= form.select :occupation_id,Occupation.all.map { |occupation|[occupation.name, occupation.id]}, {}, class: "form-control" %>
+    <br>
+    <div class="d-grid gap-2">
+    <%= form.submit '登録', class: "btn btn-primary" %>
+    </div>
 <% end %>

@@ -9,12 +9,14 @@
         </ul>
     <% end%>
     <%= form.label "プロフィール画像" %>
-    <%= form.file_field :profile_image %>
+    <%= form.file_field :profile_image, class: "form-control" %>
     <%= form.label :name, 'ユーザー名' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
     <%= form.label :introduction, '紹介文' %>
-    <%= form.text_field :introduction %>
+    <textarea class="form-control" id="floatingTextarea2" style="height:150px"></textarea>
 
-
-    <%= form.submit '更新' %>
+    <br>
+    <div class="d-grid gap-2">
+    <%= form.submit '更新', class: "btn btn-primary"  %>
+    </div>
 <% end %>

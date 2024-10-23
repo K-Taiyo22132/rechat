@@ -22,7 +22,8 @@
     <% @store_reviews.each do |store_review| %>
       <tr>
         <td><%= store_review.title %></td>
-        <td><%= store_review.review_image %></td>
+        <%# <td><%= store_review.review_image %></td>
+        <td><%= image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100') %></td> 
         <td><%= store_review.review %></td>
         <td><%= store_review.evaluation %></td>
         <td><%= store_review.spot %></td>

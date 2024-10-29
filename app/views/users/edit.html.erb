@@ -8,8 +8,39 @@
             <% end %>
         </ul>
     <% end%>
-    <%= form.label "プロフィール画像" %>
-    <%= form.file_field :profile_image, class: "form-control" %>
+    <%# <%= form.label "プロフィール画像" %>
+    <%# <%= form.file_field :profile_image %> 
+     <div class="row">
+        <div class="col-md-4 border text-center">
+            <%= image_tag(url_for(image_of_users_path(@user)),size:'100x100') %>
+            <p>現在のアイコン</p>
+        </div>
+        <div class="col-md-8 border text-center">
+            
+            <div id="img"></div>
+            <script>
+            // 選択した画像ファイルのプレビューを生成する関数を定義します。
+                function preview(obj) {
+                
+                // 選択した全てのファイルに対してループ処理をします。
+                for (i = 0; i < obj.files.length; i++) {
+                    // FileReaderオブジェクトを作成します。これによりブラウザ上でファイルを読み込むことが可能になります。
+                    let fileReader = new FileReader();
+                    // onloadイベントハンドラを設定します。ファイルが正常に読み込まれたときに呼び出されます。
+                    fileReader.onload = ((e)=> {
+                        // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
+                        // これにより、選択した画像がブラウザ上でプレビュー表示されます。
+                        document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="200" height="200" class="rounded-circle border">';
+                    });
+                    // ファイルをData URLとして読み込みます。
+                    fileReader.readAsDataURL(obj.files[i]);
+                    }
+                }
+            </script>
+            <%= form.label :icon , "アイコンを選択", class: "btn btn--form" %>
+            <%= form.file_field :icon , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
+        </div>
+    </div>
     <%= form.label :name, 'ユーザー名' %>
     <%= form.text_field :name, class: "form-control" %>
     <%= form.label :introduction, '紹介文' %>

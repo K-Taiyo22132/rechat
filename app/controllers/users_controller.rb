@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    image_path = Rails.root.join("public/images/","rails.png")
+    image_path = Rails.root.join("public/images/","rails.jpg")
     File.open(image_path,"r+b") do |f|
       @user.profile_image = f.read
     end
@@ -27,6 +27,11 @@ class UsersController < ApplicationController
   def destroy
     current_user.destroy
     redirect_to signup_path
+  end
+
+  def send_image
+    user = User.find(params[:id])
+    send_data(user.profile_image,disposition: :inline)
   end
 
   def edit

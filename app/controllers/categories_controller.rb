@@ -22,6 +22,7 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_attributes)
+  
 
     respond_to do |format|
       if @category.save
@@ -73,9 +74,22 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name, :category_image)
     end
 
+   
     def category_attributes
-      {
-        name: category_params[:name], category_image: category_params[:category_image].read
-      }
+      
+        if category_params[:category_image] == nil
+          {
+            name: category_params[:name]
+          }
+        else
+          {
+            name: category_params[:name], category_image: category_params[:category_image].read
+          }
+        end
+
+      
     end
+    
+
+
 end

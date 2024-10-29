@@ -57,6 +57,11 @@ class SelectCategoriesController < ApplicationController
     end
   end
 
+  # def send_image
+  #   select_category = Select_Category.find(params[:id])
+  #   send_data(select_category.select_category_image,disposition: :inline)
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_select_category

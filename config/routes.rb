@@ -26,5 +26,7 @@ Rails.application.routes.draw do
 
   
   resources :users
+  resources :chats
+  resources :store_reviews
 end
   

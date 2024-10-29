@@ -28,11 +28,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :evaluation %>
-    <%= form.number_field :evaluation %>
-  </div>
-
-  <div class="field">
     <%= form.label :spot %>
     <%= form.text_field :spot %>
   </div>
@@ -48,16 +43,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.label :evaluation %>
+    <%= form.select :evaluation, StoreReview.evaluations.keys.to_a, {include_blank: true}, class:'form-control' %>
   </div>
-
-  <div class="field">
-    <%= form.label :group_id %>
-    <%= form.number_field :group_id %>
-  </div>
-
+  
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  
 <% end %>

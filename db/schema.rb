@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2024_10_15_060756) do
   create_table "select_categories", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.binary "category_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

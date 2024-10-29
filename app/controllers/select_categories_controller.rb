@@ -21,24 +21,34 @@ class SelectCategoriesController < ApplicationController
 
   # POST /select_categories or /select_categories.json
   def create
-    @select_category = SelectCategory.new(select_category_params)
-
-    respond_to do |format|
-      if @select_category.save
-        format.html { redirect_to groups_path, notice: "Select category was successfully created." }
-        format.json { render :show, status: :created, location: @select_category }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @select_category.errors, status: :unprocessable_entity }
-      end
-    end
+    
     begin
       ActiveRecord::Base.transaction do
-    rescue 
+        #保存されているデータをいったん削除する。
+        @select_categories = SelectCategory.where(user_id: current_user.id)
+        @select_categories.each do |select_category|
+          select_category.destroy!
+        end
+
+        #配列形式で取得したデータを保存する
+        select_category_params[:category_id].each do|category|
+          @select_category = SelectCategory.new(user_id: current_user.id,category_id: category)
+          @select_category.save!
+        end
+      end
+      
+      #正常終了の時
+      redirect_to groups_path,notice:"Select category was successfully created."
+
+      #異常終了の時
+      rescue => e
+        @select_category = SelectCategory.new
+        render :new
     end
+  end
     
 
-  end
+  
 
   # PATCH/PUT /select_categories/1 or /select_categories/1.json
   def update

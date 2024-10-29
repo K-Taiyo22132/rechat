@@ -32,6 +32,12 @@ class SelectCategoriesController < ApplicationController
         format.json { render json: @select_category.errors, status: :unprocessable_entity }
       end
     end
+    begin
+      ActiveRecord::Base.transaction do
+    rescue 
+    end
+    
+
   end
 
   # PATCH/PUT /select_categories/1 or /select_categories/1.json
@@ -70,6 +76,6 @@ class SelectCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def select_category_params
-      params.require(:select_category).permit(:user_id, :category_id)
+      params.require(:select_category).permit(category_id: [])
     end
 end

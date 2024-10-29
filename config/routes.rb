@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'profile'
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
-  get '/image_of_users/:id',to: 'users#send_image',as: 'image_of_users'
+  get '/image_of_users/:id',to: 'users#send_image',as: 'iamge_of_users'
   
   get '/image_of_categories/:id', to: 'categories#send_image', as: 'image_of_categories'
   
-
-  get '/image_of_store_reviews/:id', to: 'store_reviews#send_image', as: 'image_of_store_reviews'
   
+
+
   get'/image_of_groups/:id',to: 'groups#send_image', as: 'image_of_groups'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -27,7 +27,5 @@ Rails.application.routes.draw do
 
   
   resources :users
-  resources :chats
-  resources :store_reviews
 end
   

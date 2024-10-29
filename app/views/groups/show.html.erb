@@ -20,15 +20,15 @@
   <%= @group.category_id %>
 </p>
 
-<%# <p>
+<p>
   <strong>Chat</strong>
   <%= link_to 'チャット', chats_path%>
-<%# </p>
+</p>
 
 <p>
   <strong>Review</strong>
   <%= link_to 'レビュー', store_reviews_path%>
-<%# </p>   %>
+</p>  
 <% if @group.chats.blank? %>
   <%= form_with(model: @chat) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>

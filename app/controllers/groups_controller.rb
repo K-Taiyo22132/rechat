@@ -57,6 +57,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find(params[:id])
+    @chat = Chat.new
+  end
+
   def send_image
     group = Group.find(params[:id])
     send_data(group.group_image,disposition: :inline)

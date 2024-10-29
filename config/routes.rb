@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :select_categories
-  get 'groups/index'
-  root to: 'groups#index'
+  get 'chats/index'
+  root to: 'chats#index'
   resources :groups
+  resources :chats
   resources :occupations
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/signup', to: 'users#new'

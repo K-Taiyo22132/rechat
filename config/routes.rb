@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :messages
+  resources :goods_comments
+  resources :goods_reviews
   resources :categories
   resources :select_categories
   get 'chats/index'

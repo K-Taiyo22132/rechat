@@ -13,6 +13,8 @@ class SelectCategoriesController < ApplicationController
   # GET /select_categories/new
   def new
     @select_category = SelectCategory.new
+    #保存済のデータを取得する
+    @select_categories = SelectCategory.where(user_id: current_user_id)
   end
 
   # GET /select_categories/1/edit
@@ -31,10 +33,10 @@ class SelectCategoriesController < ApplicationController
         end
 
         #配列形式で取得したデータを保存する
-        select_category_params[:category_id].each do|category|
-          @select_category = SelectCategory.new(user_id: current_user.id,category_id: category)
-          @select_category.save!
-        end
+         select_category_params[:category_id].each do|category|
+            @select_category = SelectCategory.new(user_id: current_user.id,category_id: category)
+            @select_category.save!
+          end
       end
       
       #正常終了の時
@@ -43,6 +45,7 @@ class SelectCategoriesController < ApplicationController
       #異常終了の時
       rescue => e
         @select_category = SelectCategory.new
+        @select_categories = SelectCategory.where(user_id: current_user.id)
         render :new
     end
   end

@@ -14,7 +14,7 @@ class SelectCategoriesController < ApplicationController
   def new
     @select_category = SelectCategory.new
     #保存済のデータを取得する
-    @select_categories = SelectCategory.where(user_id: current_user_id)
+    @select_categories = SelectCategory.where(user_id: current_user.id)
   end
 
   # GET /select_categories/1/edit

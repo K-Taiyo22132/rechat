@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'profile'
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
-  get '/image_of_users/:id',to: 'users#send_image',as: 'iamge_of_users'
+  get '/image_of_users/:id',to: 'users#send_image',as: 'image_of_users'
   
   get '/image_of_categories/:id', to: 'categories#send_image', as: 'image_of_categories'
   

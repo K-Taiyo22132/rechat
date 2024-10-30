@@ -1,0 +1,37 @@
+<%= form_with(model: goods_comment) do |form| %>
+  <% if goods_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(goods_comment.errors.count, "error") %> prohibited this goods_comment from being saved:</h2>
+
+      <ul>
+        <% goods_comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :goods_review_id %>
+    <%= form.number_field :goods_review_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :evaluation %>
+    <%= form.number_field :evaluation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

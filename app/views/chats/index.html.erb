@@ -14,9 +14,8 @@
   <tbody>
     <% @chats.each do |chat| %>
       <tr>
-        <td><%= image_tag(url_for(image_of_groups_path(group)), size: '100x100') %></td>
-        <td><%= chat.group.name %></td>
-        <td><%= link_to 'Show', chat %></td>
+        <td><%= image_tag(url_for(image_of_groups_path(chat.group.id)),size:'100x100') %></td> 
+        <td><%= link_to chat.group.name, chat %></td>
         <td><%= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

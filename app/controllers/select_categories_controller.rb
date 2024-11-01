@@ -13,6 +13,8 @@ class SelectCategoriesController < ApplicationController
   # GET /select_categories/new
   def new
     @select_category = SelectCategory.new
+    #保存済のデータを取得する
+    @select_categories = SelectCategory.where(user_id: current_user.id)
   end
 
   # GET /select_categories/1/edit
@@ -21,18 +23,35 @@ class SelectCategoriesController < ApplicationController
 
   # POST /select_categories or /select_categories.json
   def create
-    @select_category = SelectCategory.new(select_category_params)
+    
+    begin
+      ActiveRecord::Base.transaction do
+        #保存されているデータをいったん削除する。
+        @select_categories = SelectCategory.where(user_id: current_user.id)
+        @select_categories.each do |select_category|
+          select_category.destroy!
+        end
 
-    respond_to do |format|
-      if @select_category.save
-        format.html { redirect_to groups_path, notice: "Select category was successfully created." }
-        format.json { render :show, status: :created, location: @select_category }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @select_category.errors, status: :unprocessable_entity }
+        #配列形式で取得したデータを保存する
+         select_category_params[:category_id].each do|category|
+            @select_category = SelectCategory.new(user_id: current_user.id,category_id: category)
+            @select_category.save!
+          end
       end
+      
+      #正常終了の時
+      redirect_to groups_path,notice:"Select category was successfully created."
+
+      #異常終了の時
+      rescue => e
+        @select_category = SelectCategory.new
+        @select_categories = SelectCategory.where(user_id: current_user.id)
+        render :new
     end
   end
+    
+
+  
 
   # PATCH/PUT /select_categories/1 or /select_categories/1.json
   def update
@@ -70,6 +89,6 @@ class SelectCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def select_category_params
-      params.require(:select_category).permit(:user_id, :category_id)
+      params.require(:select_category).permit(category_id: [])
     end
 end

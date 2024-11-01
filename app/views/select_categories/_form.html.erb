@@ -13,8 +13,15 @@
 
   <div class="row">
     <% Category.all.each_with_index do |category,i|%>
+
+    <%
+      checked = ""
+      unless @select_categories.where(category_id: category).blank?
+        checked = "checked"
+      end
+    %>
       <div class="col-md-4 text-center">
-        <input type="checkbox" id="select_category_category_id_<%= i %>" name="select_category[category_id][]" value="<%= category.id %>" class="selected_category_image">
+        <input type="checkbox" id="select_category_category_id_<%= i %>" name="select_category[category_id][]" value="<%= category.id %>" class="selected_category_image" <%= checked %>>
         <label for="select_category_category_id_<%= i %>" class="selected_category_image">
           <%= image_tag(url_for(image_of_categories_path(category)),size: '100x100') %>
         </label>
@@ -23,10 +30,10 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <%# <div class="field">
     <%= form.label :category_id %>
-    <%= form.select :category_id,Category.all.map { |category|[category.name, category.id,]},{},class: "form-control" %>
-  </div>
+    <%# <%= form.select :category_id,Category.all.map { |category|[category.name, category.id,]},{},class: "form-control" %> 
+  <%# </div>  %>
     
     
       

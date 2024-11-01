@@ -26,7 +26,7 @@ end
 
 CSV.foreach("db/users.csv",headers: true) do |row|
   User.create!(
-    email: row["email"]
+    email: row["email"],
     password: row["password_digest"],name: row["name"],
     occupation: row["occupation_id"],profile_image:user_icon,
     introduction:row["introduction"]

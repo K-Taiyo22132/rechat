@@ -15,6 +15,15 @@ class User < ApplicationRecord
 
   belongs_to :occupation
   validates :occupation, presence: true
+has_many :goods_comments, dependent: :destroy
+has_many :store_comments, dependent: :destroy
+has_many :chats, dependent: :destroy
+has_many :store_reviews, dependent: :destroy
+has_many :goods_reviews, dependent: :destroy
+has_many :messages, dependent: :destroy
+has_many :select_categories, dependent: :destroy
+# has_many :follows dependent, dependent: :nulliy
+# has_many :followeds, class_name: "Follow", foreign_key: "followed_user_id", dependent: :nulliy
 
   has_many :store_comments,dependent: :destroy
 end

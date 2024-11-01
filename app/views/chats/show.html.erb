@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Group:</strong>
-  <%= @chat.group_id %>
+  <strong>Chat</strong>
+  <%= link_to 'チャット', messages_path%>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @chat.user_id %>
-</p>
+  <strong>Review</strong>
+  <%= link_to 'レビュー', goods_reviews_path%>
+</p>  
 
-<%= link_to 'Edit', edit_chat_path(@chat) %> |
+
+
 <%= link_to 'Back', chats_path %>

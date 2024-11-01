@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2024_10_30_021253) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "occupations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false

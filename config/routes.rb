@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :store_comments
   resources :categories
   resources :select_categories
   get 'chats/index'
@@ -30,5 +31,6 @@ Rails.application.routes.draw do
   resources :users
   resources :chats
   resources :store_reviews
+  resources :store_comments
 end
   

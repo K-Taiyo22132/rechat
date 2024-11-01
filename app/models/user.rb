@@ -16,4 +16,5 @@ class User < ApplicationRecord
   belongs_to :occupation
   validates :occupation, presence: true
 
+  has_many :store_comments,dependent: :destroy
 end

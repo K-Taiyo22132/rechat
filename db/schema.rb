@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_15_060756) do
+ActiveRecord::Schema.define(version: 2024_10_30_021253) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2024_10_15_060756) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "store_comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "store_review_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -44,7 +52,14 @@ ActiveRecord::Schema.define(version: 2024_10_15_060756) do
   create_table "select_categories", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
-    t.binary "category_image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "store_comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "store_review_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

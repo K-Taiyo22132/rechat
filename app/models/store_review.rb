@@ -2,6 +2,12 @@ class StoreReview < ApplicationRecord
   validate :error_check
   validates :review_image, presence: true
 
+  has_many :store_comments,dependent: :destroy
+
+  belongs_to :category,optional: false
+  belongs_to :user,optional: false
+  belongs_to :gorup,optional: false
+
   enum evaluation: { "★☆☆☆☆": 1,"★★☆☆☆": 2,"★★★☆☆": 3,"★★★★☆": 4,"★★★★★": 5 }
 
   def error_check

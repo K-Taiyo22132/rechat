@@ -1,0 +1,32 @@
+<%= form_with(model: store_comment) do |form| %>
+  <% if store_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(store_comment.errors.count, "error") %> prohibited this store_comment from being saved:</h2>
+
+      <ul>
+        <% store_comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :store_review_id %>
+    <%= form.select :store_review_id, StoreReview.all.map { |store_review| [store_review.title, store_review.id] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.all.map { |user| [user.name, user.id] } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

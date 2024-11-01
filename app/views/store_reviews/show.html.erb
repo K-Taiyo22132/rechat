@@ -35,3 +35,16 @@
 
 <%= link_to 'Edit', edit_store_review_path(@store_review) %> |
 <%= link_to 'Back', store_reviews_path %>
+
+<h4>コメント</h4>
+
+<%= form_tag("/store_comments") do %>
+  <%= hidden_field :store_comment, :store_review_id, value: @store_review.id %>
+  <%= text_area :store_comment, :comment %>
+  <%= submit_tag "コメント追加" %>
+<% end %>
+
+<% @store_review.store_comments.each do |store_comment| %>
+  <p><%= store_comment.user.name %><br><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
+  <p><%= store_comment.comment %></P>
+<% end %>

@@ -25,4 +25,5 @@ has_many :select_categories, dependent: :destroy
 # has_many :follows dependent, dependent: :nulliy
 # has_many :followeds, class_name: "Follow", foreign_key: "followed_user_id", dependent: :nulliy
 
+  has_many :store_comments,dependent: :destroy
 end

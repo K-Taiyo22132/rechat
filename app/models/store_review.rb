@@ -5,8 +5,8 @@ class StoreReview < ApplicationRecord
   has_many :store_comments,dependent: :destroy
 
   belongs_to :category,optional: false
-  belongs_to :user,optional: false
-  belongs_to :gorup,optional: false
+  # belongs_to :user,optional: false
+  # belongs_to :gorup,optional: false
 
   enum evaluation: { "★☆☆☆☆": 1,"★★☆☆☆": 2,"★★★☆☆": 3,"★★★★☆": 4,"★★★★★": 5 }
 

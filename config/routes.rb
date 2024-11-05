@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :store_comments
   resources :categories
+  resources :messages
   resources :select_categories
   get 'chats/index'
   root to: 'chats#index'
@@ -31,5 +32,6 @@ Rails.application.routes.draw do
   resources :chats
   resources :store_reviews
   resources :store_comments
+  resources :goods_reviews
 end
   

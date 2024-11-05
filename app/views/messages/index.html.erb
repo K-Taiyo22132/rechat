@@ -6,4 +6,17 @@
 </div>
 
 <div id="messages" data-group_id="<%= @group.id %>">
-  <%= render%>
+  <%= render @messages %>
+</div>
+<form>
+  <label style="color: black;" id="target">新しいメッセージを作成</label><br>
+  <input type="text" id="message_input" data-behavior="group_speaker" class="form-control">
+</form>
+
+<script>
+  var element = document.getElementById('message_input');
+  element.scrollIntoView();
+  element.focus();
+</script>
+
+

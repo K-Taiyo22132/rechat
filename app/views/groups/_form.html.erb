@@ -14,15 +14,15 @@
   <% end %>
   
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %> 
-  </div>
+  
 
   <div class="row">
        
         <div class="col-md-8 border text-center">
-            
+              <div class="field">
+                 <%= form.label :name %>
+                 <%= form.text_field :name %>  
+              </div>  
             <div id="img"></div>
             <script>
             // 選択した画像ファイルのプレビューを生成する関数を定義します。
@@ -46,20 +46,23 @@
             <%= form.label :icon , "アイコンを選択", class: "btn btn--form" %>
             <%= form.file_field :icon , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
         </div>
-    </div>
-
-  <div class="field">
-    <%= form.label :introduction %>
-    <%= form.text_area :introduction %>
+        <div class="field">
+            <%= form.label :introduction %>
+            <%= form.text_area :introduction %>
+        </div>
   </div>
 
-  <div class="field">
+  
+
+  <%# <div class="field">
     <%= form.label :category_id %>
     <%# <%= form.number_field :category_id %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %>
-  </div>
+    <%# <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
+  <%# </div>  %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+

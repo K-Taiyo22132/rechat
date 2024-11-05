@@ -27,15 +27,16 @@
 
 <p>
   <strong>Review</strong>
-  <%# <%= link_to 'レビュー', store_reviews_path%>
+  <%= link_to 'レビュー', store_reviews_path %>
 </p>  
+
 <% if @group.chats.blank? %>
   <%= form_with(model: @chat) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>
     <%= form.submit %>
   <% end %>
 <% else %>
-  <div>チャット</div>
+
 <% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

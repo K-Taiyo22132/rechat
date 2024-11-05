@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 2024_10_30_023654) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "goods_review_id"
+    t.integer "user_id"
+    t.integer "evaluation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goods_reviews", force: :cascade do |t|
+    t.string "title"
+    t.binary "review_image"
+    t.text "review"
+    t.integer "evaluation"
+    t.integer "price"
+    t.integer "category_id"
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "goods_comments", force: :cascade do |t|
     t.string "comment"
     t.integer "goods_review_id"

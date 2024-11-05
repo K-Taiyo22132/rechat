@@ -6,6 +6,9 @@ def self.reset_pk_sequence(table_name)
     ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='#{table_name}'")
   end
 end
+Group.delete_all
+reset_pk_sequence("groups")
+
 Occupation.delete_all
 reset_pk_sequence("occupations")
 

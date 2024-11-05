@@ -1,15 +1,27 @@
-<h1>ログイン</h1>
 
+<div class = "row">
+<div class = "col-md-6">
+    <%= image_tag '/images/sample.png' %>
+</div>
+<div class = "col-md-6">
+    <h1>レチャット</h1>
+    <br>
 <%= form_with model: @session, local: true do |form| %>
     <%= flash[:danger] %>
 
     <%= form.label :email, 'メールアドレス' %>
-    <%= form.email_field :email %>
+        <br>
+    <%= form.email_field :email, class: "form-control"  %>
 
     <%= form.label :password, 'パスワード' %>
-    <%= form.password_field :password %>
-
-    <%= form.submit 'ログイン' %>
-
-    <p>アカウントをお持ちでないですか？<%= link_to "登録する",signup_path%></p>
+    <%= form.password_field :password, class: "form-control"  %>
+        <br>
+    <br>
+    <div class="d-grid gap-2">
+    <%= form.submit 'ログイン', class: "btn btn-primary" %>
+    </div>
+    <br>
+    <p class="text-end">アカウントをお持ちでないですか？<%= link_to "登録する",signup_path%></p>
+</div>
+</div>
 <% end %>

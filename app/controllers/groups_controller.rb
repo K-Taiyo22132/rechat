@@ -81,5 +81,11 @@ class GroupsController < ApplicationController
         name: group_params[:name],group_image: group_params[:group_image].read,introduction:group_params[:introduction]
       }
     end
+
 end
+<<<<<<< HEAD
+
 # category_id:group_params[:category_id]
+=======
+# category_id:group_params[:category_id]
+>>>>>>> 9cd78ba374f46a470a6697f1541476f0273c8244

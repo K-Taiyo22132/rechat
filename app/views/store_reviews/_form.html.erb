@@ -37,9 +37,13 @@
     <%= form.text_field :tell %>
   </div>
 
-  <div class="field">
+  <%# <div class="field">
     <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+    <%# <%= form.number_field :category_id %>
+  <%# </div> %> 
+
+  <div>
+    <%= session["selected_group_id_#{current_user.id}"]%>
   </div>
 
   <div class="field">

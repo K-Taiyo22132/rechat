@@ -3,6 +3,8 @@ class StoreReviewsController < ApplicationController
 
   # GET /store_reviews or /store_reviews.json
   def index
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
+    
     @store_reviews = StoreReview.all
   end
 
@@ -22,6 +24,12 @@ class StoreReviewsController < ApplicationController
   # POST /store_reviews or /store_reviews.json
   def create
     @store_review = StoreReview.new(store_review_attributes)
+    
+    group = Group.find(session["selected_group_id_#{current_user.id}"])
+    @store_review.category_id = group.category_id
+
+    @store_review.user_id = current_user.id
+    @store_review.group_id = session["selected_group_id_#{current_user.id}"]
 
     respond_to do |format|
       if @store_review.save
@@ -70,12 +78,22 @@ class StoreReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def store_review_params
-      params.require(:store_review).permit(:title, :review_image, :review, :spot, :tell, :category_id, :evaluation)
+      params.require(:store_review).permit(:title, :review_image, :review, :spot, :tell, :evaluation)
     end
 
     def store_review_attributes
       {
-        title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], category_id: store_review_params[:category_id], evaluation:store_review_params[:evaluation] 
+        title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation] 
       }
     end
+
+    # def search
+    #   if params[:search].present? && params[:search][:group].present?
+    #     session[:search_group] = params[:search][:group]
+    #   else
+    #     session[:search_group] = nil
+    #   end
+      
+    #   redirect_to store_review_path
+    # end
 end

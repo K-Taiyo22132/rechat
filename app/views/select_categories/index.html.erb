@@ -17,7 +17,7 @@
         <td><%= select_category.user_id %></td>
         <td><%= select_category.category_id %></td>
         <td><%= link_to 'Show', select_category %></td>
-        <td><%= link_to 'Edit', edit_select_category_path(select_category) %></td>
+        <%# <td><%= link_to 'Edit', edit_select_category_path(select_category)</td>  %>
         <td><%= link_to 'Destroy', select_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

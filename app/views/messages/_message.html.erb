@@ -13,3 +13,9 @@
         $('p.' + <%= message.id %>).css('text-align', 'left');
     }
 </script>
+
+<script>
+    var element = document.getElementById('message_input');
+    element.scrollIntoView();
+    element.focus();
+</script>

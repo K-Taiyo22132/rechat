@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
   get '/image_of_users/:id',to: 'users#send_image',as: 'image_of_users'
   
+  
   get '/image_of_categories/:id', to: 'categories#send_image', as: 'image_of_categories'
   
   get '/image_of_store_reviews/:id', to: 'store_reviews#send_image', as: 'image_of_store_reviews'

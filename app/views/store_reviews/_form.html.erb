@@ -16,8 +16,11 @@
     <%= form.text_field :title %>
   </div>
 
+              
    <div class="row">
         
+              
+              
         <div class="col-md-8 border text-center">
             
             <div id="img"></div>
@@ -41,6 +44,9 @@
                 }
             </script>
             <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
+             <div class = "col-md-6">
+                 <%= image_tag '/images/railskame.jpg',size:'150x110' %>
+             </div>
             <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
         </div>
     </div>

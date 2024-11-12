@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_30_023654) do
+ActiveRecord::Schema.define(version: 2024_11_08_025246) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2024_10_30_023654) do
   end
 
   create_table "occupations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "review_homes", force: :cascade do |t|
+    t.string "title"
+    t.binary "review_image"
+    t.binary "category_image"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

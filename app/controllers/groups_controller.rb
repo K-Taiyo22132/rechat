@@ -83,9 +83,5 @@ class GroupsController < ApplicationController
     end
 
 end
-<<<<<<< HEAD
 
 # category_id:group_params[:category_id]
-=======
-# category_id:group_params[:category_id]
->>>>>>> 9cd78ba374f46a470a6697f1541476f0273c8244

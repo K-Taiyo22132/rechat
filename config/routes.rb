@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :group_reviews
+  resources :select_reviews
+  resources :review_homes
   resources :store_comments
   resources :categories
   resources :messages

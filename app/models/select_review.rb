@@ -1,0 +1,2 @@
+class SelectReview < ApplicationRecord
+end

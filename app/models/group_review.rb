@@ -1,0 +1,2 @@
+class GroupReview < ApplicationRecord
+end

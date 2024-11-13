@@ -1,0 +1,37 @@
+<%= form_with(model: review_home) do |form| %>
+  <% if review_home.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review_home.errors.count, "error") %> prohibited this review_home from being saved:</h2>
+
+      <ul>
+        <% review_home.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.number_field :category_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :goods_review_id %>
+    <%= form.number_field :goods_review_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :store_review_id %>
+    <%= form.number_field :store_review_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.number_field :group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

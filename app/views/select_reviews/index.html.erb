@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>投稿選択</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Goods review</th>
+      <th>Store review</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @select_reviews.each do |select_review| %>
+      <tr>
+        <td><%= select_review.goods_review_id %></td>
+        <td><%= select_review.store_review_id %></td>
+        <td><%= link_to 'Show', select_review %></td>
+        <td><%= link_to 'Edit', edit_select_review_path(select_review) %></td>
+        <td><%= link_to 'Destroy', select_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'お店', new_store_review_path %>
+<%= link_to '商品', new_goods_review_path %>
+
+<%# <%= link_to 'New Select Review', new_select_review_path %>

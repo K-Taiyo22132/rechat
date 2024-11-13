@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}, on: :create
   has_secure_password
 
-  validates :name, presence: true
+  # validates :name, presence: true
 
 
   belongs_to :occupation

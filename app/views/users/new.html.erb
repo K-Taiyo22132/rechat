@@ -1,5 +1,4 @@
-<h1>アカウント登録</h1>
-
+<h1>レチャット</h1>
 <%= form_with model: @user, url: signup_path, local: true do |form| %>
     <% if @user.errors.any? %>
         <strong><%= @user.errors.count %>個のエラーがあります</strong>
@@ -18,14 +17,12 @@
 
     <p><%= form.label :password_confirmation, 'パスワード（確認）' %>
     <%= form.password_field :password_confirmation, class: "form-control" %></p>
-
-    <%= form.label :name, 'なまえ' %>
-    <%= form.text_field :name, class: "form-control" %>
-
     <%= form.label :occupation, '職種' %>
     <%= form.select :occupation_id,Occupation.all.map { |occupation|[occupation.name, occupation.id]}, {}, class: "form-control" %>
     <br>
     <div class="d-grid gap-2">
     <%= form.submit '登録', class: "btn btn-primary" %>
     </div>
+        <br>
+    <p class="text-end">アカウントをお持ちですか？<%= link_to "ログインする",login_path%></p>
 <% end %>

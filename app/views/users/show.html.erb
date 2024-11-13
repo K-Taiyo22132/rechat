@@ -1,6 +1,5 @@
 <h1>利用者プロフィール</h1>
-
-<p>メールアドレス：<%= current_user.email %></p>
+<p><%= image_tag(url_for(image_of_users_path(@user)), size: '100x100')%></p>
 <p>なまえ：<%= current_user.name %></p>
 <p>
     <strong>職種：</strong>

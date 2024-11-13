@@ -79,12 +79,12 @@ class StoreReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def store_review_params
-      params.require(:store_review).permit(:title, :review_image, :review, :spot, :tell, :evaluation)
+      params.require(:store_review).permit(:title, :review_image, :review, :spot, :tell, :evaluation, :category_id)
     end
 
     def store_review_attributes
       {
-        title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation]
+        title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation], category_id:store_review_params[:category_id]
       }
     end
 

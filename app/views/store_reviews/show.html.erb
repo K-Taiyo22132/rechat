@@ -40,6 +40,5 @@
   <%# <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100') %>
   <%= image_tag(url_for(image_of_users_path(store_comment.user_id)),size:'50x50') %>
   <p><%= store_comment.user.name %><br><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
-  <P><%= store_comment.user_id%></p>
   <p><%= store_comment.comment %></P>
 <% end %>

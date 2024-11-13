@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   
   get '/image_of_categories/:id', to: 'categories#send_image', as: 'image_of_categories'
   
+  get '/image_of_goods_reviews/:id', to: 'goods_reviews#send_image', as: 'image_of_goods_reviews'
+  
   get '/image_of_store_reviews/:id', to: 'store_reviews#send_image', as: 'image_of_store_reviews'
 
   get'/image_of_groups/:id',to: 'groups#send_image', as: 'image_of_groups'

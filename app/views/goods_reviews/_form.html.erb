@@ -16,19 +16,37 @@
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :review_image %>
-    <%= form.text_field :review_image %>
-  </div>
+  <div class="row">
+        
+        <div class="col-md-8 border text-center">
+            
+            <div id="img"></div>
+            <script>
+                function preview(obj) {
+                
+                // 選択した全てのファイルに対してループ処理をします。
+                for (i = 0; i < obj.files.length; i++) {
+                    // FileReaderオブジェクトを作成します。これによりブラウザ上でファイルを読み込むことが可能になります。
+                    let fileReader = new FileReader();
+                    // onloadイベントハンドラを設定します。ファイルが正常に読み込まれたときに呼び出されます。
+                    fileReader.onload = ((e)=> {
+                        // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
+                        // これにより、選択した画像がブラウザ上でプレビュー表示されます。
+                        document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" class="rounded-circle border">';
+                    });
+                    // ファイルをData URLとして読み込みます。
+                    fileReader.readAsDataURL(obj.files[i]);
+                    }
+                }
+            </script>
+            <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
+            <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
+        </div>
+    </div>
 
   <div class="field">
     <%= form.label :review %>
     <%= form.text_area :review %>
-  </div>
-
-  <div class="field">
-    <%= form.label :evaluation %>
-    <%= form.number_field :evaluation %>
   </div>
 
   <div class="field">
@@ -51,7 +69,13 @@
     <%= form.number_field :group_id %>
   </div>
 
+  <div class="field">
+    <%= form.label :evaluation %>
+    <%= form.select :evaluation, GoodsReview.evaluations.keys.to_a, {include_blank: true}, class:'form-control' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

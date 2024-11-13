@@ -33,7 +33,7 @@
                     fileReader.onload = ((e)=> {
                         // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
                         // これにより、選択した画像がブラウザ上でプレビュー表示されます。
-                        document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="200" height="200" class="rounded-circle border">';
+                        document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" class="rounded-circle border">';
                     });
                     // ファイルをData URLとして読み込みます。
                     fileReader.readAsDataURL(obj.files[i]);
@@ -59,11 +59,7 @@
     <%= form.label :tell %>
     <%= form.text_field :tell %>
   </div>
-
-  <%# <div class="field">
-    <%= form.label :category_id %>
-    <%# <%= form.number_field :category_id %>
-  <%# </div> %> 
+ 
 
   <div>
     <%= session["selected_group_id_#{current_user.id}"]%>

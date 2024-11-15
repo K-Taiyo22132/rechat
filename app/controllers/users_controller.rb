@@ -64,13 +64,13 @@ class UsersController < ApplicationController
 
     def user_update_attributes
       if user_params_update[:profile_image] == nil
-      {
-        name: user_params_update[:name]
-      }
-      else
-      {
+       {
+         name: user_params_update[:name]
+       }
+       else
+       {
         name: user_params_update[:name], profile_image: user_params_update[:profile_image].read
-      }
+       }
       end
     end
   end

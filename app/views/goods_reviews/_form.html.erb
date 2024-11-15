@@ -49,14 +49,15 @@
     <%= form.text_area :review %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
+    <div class="field">
+        <%= form.label :price %>
+        <%= form.number_field :price %> 
+    </div>  
+      
+  
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
   </div>
 
   <div class="field">

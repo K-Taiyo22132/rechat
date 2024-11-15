@@ -1,16 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <h1> レビューホーム</h1>
-<% @select_categories.each do |category| %>
-     
-      <div class="col-md-4 text-center">
-        
+ <div class="row">
+    <% @select_categories.each do |category| %>
        
-          <td><%= image_tag(url_for(image_of_categories_path(category)),size: '100x100') %></td>
+          <div class="col-md-4 text-center">
+            
+          
+              <td><%= image_tag(url_for(image_of_categories_path(category.category_id)), size: '100x100') %></td>
+            
+            
+          </div>
         
-        
-      </div>
-<% end %>
+    <% end %>
+ </div>
 <table>
   <thead>
     <tr>

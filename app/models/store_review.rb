@@ -5,13 +5,8 @@ class StoreReview < ApplicationRecord
   has_many :store_comments,dependent: :destroy
 
   belongs_to :category,optional: false
-<<<<<<< HEAD
   belongs_to :user,optional: false
   belongs_to :group,optional: false
-=======
-  # belongs_to :user,optional: false
-  # belongs_to :gorup,optional: false
->>>>>>> 9cd78ba374f46a470a6697f1541476f0273c8244
 
   enum evaluation: { "★☆☆☆☆": 1,"★★☆☆☆": 2,"★★★☆☆": 3,"★★★★☆": 4,"★★★★★": 5 }
 

@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2024_11_13_021944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "store_review_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "goods_comments", force: :cascade do |t|
     t.string "comment"
     t.integer "goods_review_id"

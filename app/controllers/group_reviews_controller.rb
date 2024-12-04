@@ -4,11 +4,8 @@ class GroupReviewsController < ApplicationController
   # GET /group_reviews or /group_reviews.json
   def index
     @group_reviews = GroupReview.all
-<<<<<<< HEAD
     session["selected_group_id_#{current_user.id}"] = params[:group_id]
-=======
     @select_categories = SelectCategory.where(user_id: current_user.id)
->>>>>>> 65481d9d61b429541253f49b7545f479a6c0c888
   end
 
   # GET /group_reviews/1 or /group_reviews/1.json

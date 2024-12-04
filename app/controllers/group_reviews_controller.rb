@@ -4,6 +4,7 @@ class GroupReviewsController < ApplicationController
   # GET /group_reviews or /group_reviews.json
   def index
     @group_reviews = GroupReview.all
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
   end
 
   # GET /group_reviews/1 or /group_reviews/1.json
@@ -22,6 +23,11 @@ class GroupReviewsController < ApplicationController
   # POST /group_reviews or /group_reviews.json
   def create
     @group_review = GroupReview.new(group_review_params)
+    group = Group.find(session["selected_group_id_#{current_user.id}"])
+    @store_review.category_id = group.category_id
+
+    @store_review.user_id = current_user.id
+    @store_review.group_id = session["selected_group_id_#{current_user.id}"]
 
     respond_to do |format|
       if @group_review.save

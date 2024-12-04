@@ -5,6 +5,7 @@ class ReviewHomesController < ApplicationController
   def index
     @review_homes = ReviewHome.all
     @select_categories = SelectCategory.where(user_id: current_user.id)
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
   end
 
   # GET /review_homes/1 or /review_homes/1.json

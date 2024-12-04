@@ -24,7 +24,12 @@ class StoreReviewsController < ApplicationController
   # POST /store_reviews or /store_reviews.json
   def create
     @store_review = StoreReview.new(store_review_attributes)
+<<<<<<< HEAD
     
+=======
+    @store_review.user_id = current_user.id
+    @store_review.group_id = session["selected_group_id_#{current_user.id}"]
+>>>>>>> ba8bf9a72430b8777782cae9c964dce0eea1d371
     # image_path = Rails.root.join("public/images/","railskame.jpg")
     # group = Group.find(session["selected_group_id_#{current_user.id}"])
     # @store_review.category_id = group.category_id

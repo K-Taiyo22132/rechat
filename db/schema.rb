@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_30_023654) do
+ActiveRecord::Schema.define(version: 2024_11_13_021944) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2024_10_30_023654) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment"
+    t.integer "store_review_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,6 +56,16 @@ ActiveRecord::Schema.define(version: 2024_10_30_023654) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "group_reviews", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "group_id"
+    t.integer "store_review_id"
+    t.integer "goods_review"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.binary "group_image"
@@ -71,9 +89,25 @@ ActiveRecord::Schema.define(version: 2024_10_30_023654) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "review_homes", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "goods_review_id"
+    t.integer "store_review_id"
+    t.integer "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "select_categories", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "select_reviews", force: :cascade do |t|
+    t.integer "goods_review_id"
+    t.integer "store_review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

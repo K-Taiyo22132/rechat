@@ -44,6 +44,9 @@
                 }
             </script>
             <%= form.label :group_image , "アイコンを選択", class: "btn btn--form" %>
+             <div class = "col-md-6">
+                 <%= image_tag '/images/railskame.jpg',size:'150x110' %>
+             </div>
             <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
         </div>
         <div class="field">
@@ -52,7 +55,10 @@
         </div>
   </div>
 
-  
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
+  </div> 
 
   <div class="actions">
     <%= form.submit %>
@@ -61,8 +67,4 @@
 
 
 
-<%# <div class="field">
-    <%= form.label :category_id %>
-    <%# <%= form.number_field :category_id %>
-    <%# <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
-  <%# </div>  %>
+

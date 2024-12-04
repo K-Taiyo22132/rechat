@@ -1,0 +1,27 @@
+<%= form_with(model: select_review) do |form| %>
+  <% if select_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(select_review.errors.count, "error") %> prohibited this select_review from being saved:</h2>
+
+      <ul>
+        <% select_review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :goods_review_id %>
+    <%= form.number_field :goods_review_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :store_review_id %>
+    <%= form.number_field :store_review_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -78,10 +78,10 @@ class GroupsController < ApplicationController
     end
     def group_attributes
       {
-        name: group_params[:name],group_image: group_params[:group_image].read,introduction:group_params[:introduction]
+        name: group_params[:name],group_image: group_params[:group_image].read,introduction:group_params[:introduction],category_id:group_params[:category_id]
       }
     end
 
 end
 
-# category_id:group_params[:category_id]
+

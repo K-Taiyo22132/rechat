@@ -35,8 +35,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
     
+    
+    @user = User.find(current_user.id)
+    @user_edit = params[:user_edit]
 
   end
 
@@ -62,13 +64,13 @@ class UsersController < ApplicationController
 
     def user_update_attributes
       if user_params_update[:profile_image] == nil
-      {
-        name: user_params_update[:name]
-      }
-      else
-      {
+       {
+         name: user_params_update[:name]
+       }
+       else
+       {
         name: user_params_update[:name], profile_image: user_params_update[:profile_image].read
-      }
+       }
       end
     end
   end

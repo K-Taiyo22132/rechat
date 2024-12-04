@@ -4,6 +4,7 @@ class GroupReviewsController < ApplicationController
   # GET /group_reviews or /group_reviews.json
   def index
     @group_reviews = GroupReview.all
+    @select_categories = SelectCategory.where(user_id: current_user.id)
   end
 
   # GET /group_reviews/1 or /group_reviews/1.json

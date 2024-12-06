@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :select_categories
   get 'chats/index'
+  get 'users/profile'
   root to: 'chats#index'
   resources :groups
   resources :chats

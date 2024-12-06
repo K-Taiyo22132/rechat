@@ -11,8 +11,6 @@
       <th>Evaluation</th>
       <th>Price</th>
       <th>Category</th>
-      <th>User</th>
-      <th>Group</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,9 +23,9 @@
         <td><%= goods_review.review %></td>
         <td><%= goods_review.evaluation %></td>
         <td><%= goods_review.price %></td>
-        <td><%= goods_review.category_id %></td>
-        <td><%= goods_review.user_id %></td>
-        <td><%= goods_review.group_id %></td>
+        <td>円</td>
+        <td><%= goods_review.category.name %></td>
+
         <td><%= link_to 'Show', goods_review %></td>
         <td><%= link_to 'Edit', edit_goods_review_path(goods_review) %></td>
         <td><%= link_to 'Destroy', goods_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>

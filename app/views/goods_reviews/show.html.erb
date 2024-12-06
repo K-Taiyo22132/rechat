@@ -16,29 +16,32 @@
 </p>
 
 <p>
-  <strong>Evaluation:</strong>
-  <%= @goods_review.evaluation %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @goods_review.price %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @goods_review.category_id %>
+  <%= @goods_review.category.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @goods_review.user_id %>
+  <strong>Evaluation:</strong>
+  <%= @goods_review.evaluation %>
 </p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @goods_review.group_id %>
-</p>
-
 <%= link_to 'Edit', edit_goods_review_path(@goods_review) %> |
 <%= link_to 'Back', goods_reviews_path %>
+
+<h4>コメント</h4>
+
+<%= form_tag("/goods_comments") do %>
+  <%= hidden_field :goods_comment, :goods_review_id, value: @goods_review.id %>
+  <%= text_area :goods_comment, :comment %>
+  <%= submit_tag "コメント追加" %>
+<% end %>
+
+<% @goods_review.goods_comments.each do |goods_comment| %>
+  <%= image_tag(url_for(image_of_users_path(goods_comment.user_id)),size:'50x50') %>
+  <p><%= goods_comment.user.name %><br><%= goods_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
+  <p><%= goods_comment.comment %></P>
+<% end %>

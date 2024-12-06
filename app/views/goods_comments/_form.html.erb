@@ -18,17 +18,12 @@
 
   <div class="field">
     <%= form.label :goods_review_id %>
-    <%= form.number_field :goods_review_id %>
+    <%= form.select :goods_review_id, GoodsReview.all.map { |goods_review| [goods_review.title, goods_review.id] } %>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :evaluation %>
-    <%= form.number_field :evaluation %>
+    <%= form.select :user_id, User.all.map { |user| [user.name, user.id] } %>
   </div>
 
   <div class="actions">

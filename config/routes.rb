@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :select_reviews
   resources :review_homes
   resources :store_comments
+  resources :goods_comments
   resources :categories
   resources :messages
   resources :select_categories

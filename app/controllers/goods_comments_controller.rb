@@ -23,15 +23,23 @@ class GoodsCommentsController < ApplicationController
   def create
     @goods_comment = GoodsComment.new(goods_comment_params)
 
-    respond_to do |format|
-      if @goods_comment.save
-        format.html { redirect_to @goods_comment, notice: "Goods comment was successfully created." }
-        format.json { render :show, status: :created, location: @goods_comment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @goods_comment.errors, status: :unprocessable_entity }
-      end
+    @goods_comment.user_id = current_user.id
+
+    if @goods_comment.save
+      redirect_to goods_review_url(@goods_comment.goods_review_id), notice:"コメントを追加しました"
+    else
+      render :new
     end
+
+    # respond_to do |format|
+    #   if @goods_comment.save
+    #     format.html { redirect_to @goods_comment, notice: "Goods comment was successfully created." }
+    #     format.json { render :show, status: :created, location: @goods_comment }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @goods_comment.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /goods_comments/1 or /goods_comments/1.json
@@ -65,6 +73,6 @@ class GoodsCommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def goods_comment_params
-      params.require(:goods_comment).permit(:comment, :goods_review_id, :user_id, :evaluation)
+      params.require(:goods_comment).permit(:comment, :goods_review_id, :user_id)
     end
 end

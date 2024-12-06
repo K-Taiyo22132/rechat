@@ -23,6 +23,8 @@ class GoodsReviewsController < ApplicationController
   def create
     @goods_review = GoodsReview.new(goods_review_attributes)
 
+    @goods_review.user_id = current_user.id
+    @goods_review.group_id = session["selected_group_id_#{current_user.id}"]
     # group = Group.find(session["selected_group_id_#{current_user.id}"])
 
     # @store_review.user_id = current_user.id

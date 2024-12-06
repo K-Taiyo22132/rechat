@@ -1,6 +1,6 @@
-<p class="<%= message.id %>"><%= message.user.name %></p>
+<p class="<%= message.id %>"><%= link_to message.user.name,profile_path(message.user.id) %><%= link_to image_tag(url_for(image_of_users_path(message.user.id)),size:'50x50'),profile_path(message.user.id) %></p>
 <p class="<%= message.id %>"><%= message.message %></p>
-<p class="<%= message.id %>"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+<p class="<%= message.id %>"><%= message.created_at.strftime("%H:%M") %></p>
 
 <script>
     var message = <%= message.user.id %>;

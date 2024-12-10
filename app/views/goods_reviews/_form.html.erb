@@ -19,7 +19,7 @@
   <div class="row">
         
         <div class="col-md-8 border text-center">
-            
+            if 
             <div id="img"></div>
             <script>
                 function preview(obj) {
@@ -33,12 +33,17 @@
                         // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
                         // これにより、選択した画像がブラウザ上でプレビュー表示されます。
                         document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" class="rounded-circle border">';
+                    kamera = document.getElementById("kamera");
+                    kamera.style.display = 'none';
                     });
                     // ファイルをData URLとして読み込みます。
                     fileReader.readAsDataURL(obj.files[i]);
                     }
                 }
             </script>
+             <div class = "col-md-6">
+                 <%= image_tag '/images/railskame.jpg',size:'150x110',id:"kamera" %>
+             </div>
             <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
             <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
         </div>

@@ -1,4 +1,4 @@
-<p class="<%= message.id %>"><%= link_to message.user.name,profile_path(message.user.id) %><%= link_to image_tag(url_for(image_of_users_path(message.user.id)),size:'50x50'),profile_path(message.user.id) %></p>
+<p class="<%= message.id %>"><%= link_to message.user.name,users_profile_path(user_id: message.user.id) %><%= link_to image_tag(url_for(image_of_users_path(message.user.id)),size:'50x50'),users_profile_path(user_id: message.user.id) %></p>
 <p class="<%= message.id %>"><%= message.message %></p>
 <p class="<%= message.id %>"><%= message.created_at.strftime("%H:%M") %></p>
 

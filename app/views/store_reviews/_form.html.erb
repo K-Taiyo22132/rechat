@@ -44,9 +44,9 @@
                 }
             </script>
             <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
-             <div class = "col-md-6">
+             <%# <div class = "col-md-6">
                  <%= image_tag '/images/railskame.jpg',size:'150x110' %>
-             </div>
+             <%# </div>  %>
             <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
         </div>
     </div>

@@ -24,6 +24,12 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def profile
+    @user = User.find(params[:user_id])
+    render 'show'
+  end
+
+
   def destroy
     current_user.destroy
     redirect_to signup_path

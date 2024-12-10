@@ -1,11 +1,12 @@
 <h1>利用者プロフィール</h1>
 <p><%= image_tag(url_for(image_of_users_path(@user)), size: '100x100')%></p>
-<p>なまえ：<%= current_user.name %></p>
+<p>なまえ：<%= @user.name %></p>
 <p>
     <strong>職種：</strong>
     <%= @user.occupation.name %>
 </p>
-<p><%= link_to'プロフィール変更',edit_user_path(user_id:@user_id,user_edit:true)%>
+
+<p><%= link_to'プロフィール変更',edit_user_path(id:@user.id,user_edit:true)%>
 <p><%= link_to 'カテゴリー変更', new_select_category_path %></p>
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(current_user), method: :delete, data: { confirm: '本当に削除しますか？' }%></p>

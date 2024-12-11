@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Goods Reviews</h1>
+<h1>商品レビュー</h1>
 
 <table>
   <thead>
@@ -22,12 +22,7 @@
         <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100') %></td>
         <td><%= goods_review.review %></td>
         <td><%= goods_review.evaluation %></td>
-<<<<<<< HEAD
         <td><%= goods_review.price %><%= '円' %></td>
-=======
-        <td><%= goods_review.price %></td>
-        <td>円</td>
->>>>>>> 33218ed5665be72d46d6813f84613b9329d6a553
         <td><%= goods_review.category.name %></td>
 
         <td><%= link_to 'Show', goods_review %></td>

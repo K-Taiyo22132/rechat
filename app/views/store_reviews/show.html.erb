@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>タイトル:</strong>
   <%= @store_review.title %>
 </p>
 
 <p>
-  <strong>Review image:</strong>
-  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100') %>
+  <strong>画像:</strong>
+  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),class: "rounded-circle",size: '100x100') %>
 </p>
 
 <p>
-  <strong>Spot:</strong>
+  <strong>場所:</strong>
   <%= @store_review.spot %>
 </p>
 
 <p>
-  <strong>Tell:</strong>
+  <strong>電話番号:</strong>
   <%= @store_review.tell %>
 </p>
 
 <p>
-  <strong>Evaluation:</strong>
+  <strong>評価:</strong>
   <%= @store_review.evaluation %>
 </p>
 

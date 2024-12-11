@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :"レビュー名" %>
     <%= form.text_field :title %>
   </div>
 
@@ -35,10 +35,13 @@
                     fileReader.onload = ((e)=> {
                         // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
                         // これにより、選択した画像がブラウザ上でプレビュー表示されます。
-                      document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" class="rounded-circle border">';
-                     <% if store_review.review_image.nil? %>
+                      document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" >';
+                    <% if store_review.review_image.nil? %>
                       kamera = document.getElementById("kamera");
                       kamera.style.display = 'none';
+                    <% else %>
+                      aikon = document.getElementById("aikon");
+                      aikon.style.display = 'none';
                     <% end %>
                     });
                     // ファイルをData URLとして読み込みます。
@@ -55,7 +58,7 @@
               </div> 
               <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
             <%else%> 
-            
+              <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100',id:"aikon") %>
               <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
             <%end%>
            
@@ -63,17 +66,17 @@
     </div>
 
   <div class="field">
-    <%= form.label :review %>
+    <%= form.label :"レビュー本文" %>
     <%= form.text_area :review %>
   </div>
 
   <div class="field">
-    <%= form.label :spot %>
+    <%= form.label :"場所" %>
     <%= form.text_field :spot %>
   </div>
 
   <div class="field">
-    <%= form.label :tell %>
+    <%= form.label :"電話番号" %>
     <%= form.text_field :tell %>
   </div>
 
@@ -83,12 +86,12 @@
     <%= session["selected_group_id_#{current_user.id}"]%>
   </div>
   <div class="field">
-    <%= form.label :category_id %>
+    <%= form.label :"カテゴリーID" %>
     <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
   </div>
 
   <div class="field">
-    <%= form.label :evaluation %>
+    <%= form.label :"評価" %>
     <%= form.select :evaluation, StoreReview.evaluations.keys.to_a, {include_blank: true}, class:'form-control' %>
   </div>
   

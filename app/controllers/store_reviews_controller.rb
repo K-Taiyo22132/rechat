@@ -20,7 +20,12 @@ class StoreReviewsController < ApplicationController
   # GET /store_reviews/1/edit
   def edit
   end
-
+  
+  def top
+    @title = 'タイトル'
+    @review = 'レビュー'
+  end 
+    
   # POST /store_reviews or /store_reviews.json
   def create
     @store_review = StoreReview.new(store_review_attributes)
@@ -84,6 +89,7 @@ class StoreReviewsController < ApplicationController
     end
 
     def store_review_attributes
+      
       {
         title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation], category_id:store_review_params[:category_id]
       }

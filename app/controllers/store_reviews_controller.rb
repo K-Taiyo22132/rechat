@@ -4,7 +4,7 @@ class StoreReviewsController < ApplicationController
   # GET /store_reviews or /store_reviews.json
   def index
     # session["selected_group_id_#{current_user.id}"] = params[:group_id]
-    
+
     @store_reviews = StoreReview.all
   end
 

@@ -17,7 +17,7 @@
   </div>
 
               
-   <div class="row">
+    <div class="row">
         
               
               
@@ -68,9 +68,9 @@
 
    
 
-  <div>
+  <%# <div>
     <%= session["selected_group_id_#{current_user.id}"]%>
-  </div>
+  <%# </div> %>
   <div class="field">
     <%= form.label :category_id %>
     <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 

@@ -20,15 +20,7 @@
   <%= @group.category_id %>
 </p>
 
-<p>
-  <strong>Chat</strong>
-  <%= link_to 'チャット', chat_path%>
-</p>
 
-<p>
-  <strong>Review</strong>
-  <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
-</p>  
 
 <% if @group.chats.blank? %>
   <%= form_with(model: @chat) do |form| %>
@@ -36,7 +28,15 @@
     <%= form.submit %>
   <% end %>
 <% else %>
+  <p>
+    <strong>Chat</strong>
+    <%= link_to 'チャット', chat_path%>
+  </p>
 
+  <p>
+    <strong>Review</strong>
+    <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
+  </p>  
 <% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

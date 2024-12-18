@@ -37,18 +37,33 @@
                         // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
                         // これにより、選択した画像がブラウザ上でプレビュー表示されます。
                         document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="200" height="200" class="rounded-circle border">';
+                    <% if group.group_image.nil? %>
+                      kamera = document.getElementById("kamera");
+                      kamera.style.display = 'none';
+                    <% else %>
+                      aikon = document.getElementById("aikon");
+                      aikon.style.display = 'none';
+                    <% end %>
                     });
+                    
                     // ファイルをData URLとして読み込みます。
                     fileReader.readAsDataURL(obj.files[i]);
                     }
                 }
             </script>
             <%= form.label :group_image , "アイコンを選択", class: "btn btn--form" %>
-             <div class = "col-md-6">
-                 <%= image_tag '/images/railskame.jpg',size:'150x110' %>
-             </div>
-            <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
-        </div>
+            <%if group.group_image.nil?%> 
+              
+            
+              <div class = "col-md-6">
+                 <%= image_tag '/images/railskame.jpg',size:'150x110',id:"kamera" %>
+              </div> 
+              <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
+            <%else%> 
+              <%= image_tag(url_for(image_of_groups_path(@group)),size: '100x100',id:"aikon") %>
+              <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
+            <%end%>
+            
         <div class="field">
             <%= form.label :introduction %>
             <%= form.text_area :introduction %>

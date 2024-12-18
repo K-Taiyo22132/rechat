@@ -30,7 +30,7 @@
 <% else %>
   <p>
     <strong>Chat</strong>
-    <%= link_to 'チャット', chat_path%>
+    <%= link_to 'チャット', chat_path(id:@group.chats[0].id) %>
   </p>
 
   <p>

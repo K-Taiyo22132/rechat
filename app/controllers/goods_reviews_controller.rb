@@ -22,7 +22,6 @@ class GoodsReviewsController < ApplicationController
   # POST /goods_reviews or /goods_reviews.json
   def create
     @goods_review = GoodsReview.new(goods_review_attributes)
-
     @goods_review.user_id = current_user.id
     @goods_review.group_id = session["selected_group_id_#{current_user.id}"]
     # group = Group.find(session["selected_group_id_#{current_user.id}"])
@@ -76,12 +75,12 @@ class GoodsReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def goods_review_params
-      params.require(:goods_review).permit(:title, :review_image, :review, :evaluation, :price, :category_id, :user_id, :group_id)
+      params.require(:goods_review).permit(:title, :review_image, :review, :evaluation, :price, :category_id)
     end
 
     def goods_review_attributes
       {
-        title: goods_review_params[:title], review_image: goods_review_params[:review_image].read, review: goods_review_params[:review], evaluation: goods_review_params[:evaluation], price: goods_review_params[:price], category_id: goods_review_params[:category_id], user_id: goods_review_params[:user_id], group_id: goods_review_params[:group_id] 
+        title: goods_review_params[:title], review_image: goods_review_params[:review_image].read, review: goods_review_params[:review], evaluation: goods_review_params[:evaluation], price: goods_review_params[:price], category_id: goods_review_params[:category_id]
       }
     end
     

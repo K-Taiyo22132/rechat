@@ -71,7 +71,7 @@
 
     <div class="field">
         <%= form.label :price %>
-        <%= form.number_field :price %> 
+        <%= form.text_field :price %> 
     </div>  
       
   
@@ -90,9 +90,9 @@
     <%# <%= form.number_field :group_id %>
   <%# </div>  %>
 
-  <div>
+  <%# <div>
     <%= session["selected_group_id_#{current_user.id}"]%>
-  </div>
+  <%# </div> %>
 
   <div class="field">
     <%= form.label :evaluation %>

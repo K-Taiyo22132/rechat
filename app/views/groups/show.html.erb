@@ -20,6 +20,7 @@
   <%= @group.category_id %>
 </p>
 
+<<<<<<< HEAD
 <% if @group.chats.blank? %>
   <%= form_with(model: @chat) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>
@@ -35,6 +36,25 @@
   <strong>Review</strong>
   <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
 </p>  
+=======
+
+
+<% if @group.chats.blank? %>
+  <%= form_with(model: @chat) do |form| %>
+    <%= form.hidden_field :group_id, value: @group.id %>
+    <%= form.submit %>
+  <% end %>
+<% else %>
+  <p>
+    <strong>Chat</strong>
+    <%= link_to 'チャット', chat_path(id:@group.chats[0].id) %>
+  </p>
+
+  <p>
+    <strong>Review</strong>
+    <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
+  </p>  
+>>>>>>> 6178dbf48965623967765eb0a8d0ea9e83cc83fa
 <% end %>
 
 

@@ -1,12 +1,32 @@
-<h1>利用者プロフィール</h1>
-<p><%= image_tag(url_for(image_of_users_path(@user)), size: '100x100')%></p>
-<p>なまえ：<%= @user.name %></p>
-<p>
+<body background->
+<div style="text-align: center;">
+<h1 style="font-size: 30px;">利用者プロフィール</h1>
+<br>
+<p><%= image_tag(url_for(image_of_users_path(@user)), size: '200x200')%></p>
+<br>
+<p style="font-size: 30px;"><%= @user.name %></p>
+<br>
+<p style="font-size: 25px; text-align: left;">
     <strong>職種：</strong>
+</p>
+<p style="font-size: 25px;">
     <%= @user.occupation.name %>
 </p>
-
+<p style="font-size: 25px; text-align: left;">
+    <strong>紹介文：</strong>
+</p>
+<p style="font-size: 25px;">
+    <%= @user.introduction %>
+</p>
+<br>
+</div>
+<div style="text-align: right;">
+<% if current_user == @user %>
 <p><%= link_to'プロフィール変更',edit_user_path(id:@user.id,user_edit:true)%>
-<p><%= link_to 'カテゴリー変更', new_select_category_path %></p>
+<%# <p><%= link_to 'カテゴリー変更', new_select_category_path %>
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(current_user), method: :delete, data: { confirm: '本当に削除しますか？' }%></p>
+<% end %>
+<p><%= link_to 'Back', :back %></p>
+</div>
+</body>

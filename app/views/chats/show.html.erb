@@ -3,15 +3,21 @@
 <p>
   <strong>Chat</strong>
   <%= link_to 'チャット', messages_path(chat_id: @chat.id) %>
-</p>
+<br>
+<br>
+<br>
+<br>
 
-<p>
   <strong>Review</strong>
   <%= link_to 'レビュー', group_reviews_path%>
+<br>
+<br>
+<br>
+  <%= link_to 'Back', chats_path %>
 </p>  
 
 
 
-<%= link_to 'Back', chats_path %>
+
 
 <%# (chat_id: @chat.id) %>

@@ -1,10 +1,7 @@
 
-<div class = "row">
-<div class = "col-md-6">
-    <%= image_tag '/images/sample.png' %>
-</div>
-<div class = "col-md-6">
+
     <h1>レチャット</h1>
+    <br>
     <br>
 <%= form_with model: @session, local: true do |form| %>
     <%= flash[:danger] %>
@@ -12,8 +9,9 @@
     <%= form.label :email, 'メールアドレス' %>
         <br>
     <%= form.email_field :email, class: "form-control"  %>
-
+<br>
     <%= form.label :password, 'パスワード' %>
+    <br>
     <%= form.password_field :password, class: "form-control"  %>
         <br>
     <br>
@@ -21,7 +19,16 @@
     <%= form.submit 'ログイン', class: "btn btn-primary" %>
     </div>
     <br>
+    <br>
+    <br>
+    <br>
     <p class="text-end">アカウントをお持ちでないですか？<%= link_to "登録する",signup_path%></p>
 </div>
 </div>
 <% end %>
+
+<style>
+h1{
+    text-align: center;
+    font-family: 'Kosugi Maru'
+}

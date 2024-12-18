@@ -1,33 +1,38 @@
 <p id="notice"><%= notice %></p>
-
+<div style="text-align: center;">
 <p>
-  <strong>Name:</strong>
+  <%= image_tag(url_for(image_of_groups_path(@group)),size: '200x200') %>
+</p>
+
+<p style="font-size: 30px;">
   <%= @group.name %>
 </p>
 
-<p>
-  <strong>Group image:</strong>
-  <%= image_tag(url_for(image_of_groups_path(@group)),size: '100x100') %>
-</p>
 
-<p>
-  <strong>Introduction:</strong>
+
+<p style="font-size: 22px;">
   <%= @group.introduction %>
 </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @group.category_id %>
+<p style="font-size: 20px;">
+  <strong>カテゴリー:</strong>
+  <%= @group.category.name %>
 </p>
 
 <p>
+  <%= link_to chat_path do %>
+  <%= image_tag '/images/chat.jpg', size: '70x70' %>
+<% end %>
+<br>
   <strong>Chat</strong>
-  <%= link_to 'チャット', chat_path%>
 </p>
 
 <p>
-  <strong>Review</strong>
-  <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
+<%= link_to group_reviews_path(group_id:@group.id) do %>
+  <%= image_tag '/images/chat.jpg', size: '70x70' %>
+<% end %>
+<br>
+    <strong>Review</strong>
 </p>  
 
 <% if @group.chats.blank? %>
@@ -38,6 +43,8 @@
 <% else %>
 
 <% end %>
-
+</div>
+<div style="text-align: right;">
 <%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Back', :back %>
+</div>

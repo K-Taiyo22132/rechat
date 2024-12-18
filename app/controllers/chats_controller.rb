@@ -9,6 +9,7 @@ class ChatsController < ApplicationController
   # GET /chats/1 or /chats/1.json
   def show
     @chats = Chat.all
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
   end
 
   # GET /chats/new

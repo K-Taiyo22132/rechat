@@ -1,7 +1,6 @@
 class StoreReview < ApplicationRecord
   validate :error_check
   validates :review_image, presence: true
-
   has_many :store_comments,dependent: :destroy
 
   belongs_to :category,optional: false
@@ -30,6 +29,10 @@ class StoreReview < ApplicationRecord
 
     if category_id.blank?
       errors[:base] << "カテゴリーを選んでください"
+    end
+
+    if review.blank?
+      errors[:base] << "レビュー内容を入力してください"
     end
 
   end

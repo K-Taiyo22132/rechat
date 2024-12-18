@@ -35,13 +35,22 @@
     <strong>Review</strong>
 </p>  
 
+
 <% if @group.chats.blank? %>
   <%= form_with(model: @chat) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>
     <%= form.submit %>
   <% end %>
 <% else %>
+  <p>
+    <strong>Chat</strong>
+    <%= link_to 'チャット', chat_path(id:@group.chats[0].id) %>
+  </p>
 
+  <p>
+    <strong>Review</strong>
+    <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
+  </p>  
 <% end %>
 </div>
 <div style="text-align: right;">

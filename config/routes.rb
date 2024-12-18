@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   get'/image_of_groups/:id',to: 'groups#send_image', as: 'image_of_groups'
   get '/login', to: 'sessions#new'
+  get "search" => "searches#search"
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>グループ参加</h1>
-
+    <%= form_tag(groups_path,method: :get) do %>
+      
+      <%= text_field_tag "search[keyword]",nil,class: "form-control" %><%= submit_tag "検索" %>
+    <% end %>
+   
 <table>
   <thead>
     <tr>

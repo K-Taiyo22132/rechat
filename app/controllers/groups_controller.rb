@@ -3,8 +3,18 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    if params[:search].present? && params[:search][:keyword].present?
+      @groups = Group.where("name like '%#{params[:search][:keyword]}%'").order(created_at: :desc)
+    else
+      @groups = Group.all.order(created_at: :desc)
+    end
+    
+    
   end
+
+  # def search
+  #   @groups = Group.all
+  # end
 
   # GET /groups/1 or /groups/1.json
   # def show

@@ -1,14 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>タイトル:</strong>
+<h1>
   <%= @store_review.title %>
-</p>
-
-<p>
-  <strong>画像:</strong>
-  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),class: "rounded-circle",size: '100x100') %>
-</p>
+</h1>
 
 <p>
   <strong>場所:</strong>
@@ -18,6 +12,10 @@
 <p>
   <strong>電話番号:</strong>
   <%= @store_review.tell %>
+</p>
+
+<p>
+  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '%') %>
 </p>
 
 <p>
@@ -42,3 +40,11 @@
   <p><%= store_comment.user.name %><br><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
   <p><%= store_comment.comment %></P>
 <% end %>
+
+<style>
+  h1{
+    text-align: center;
+  }
+  p{
+    
+  }

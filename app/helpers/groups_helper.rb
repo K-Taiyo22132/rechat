@@ -1,11 +1,12 @@
 module GroupsHelper
-  # def search
+  def home
+    if (controller.controller_name == "chats" and controller.action_name == "show") or (controller.controller_name == "messages" and controller.action_name == "index")
+      @grouplist = Chat.all
+      true
+    else
+      false
+    end
+  end
 
-  #       # @model = params[:model]
-
-  #  <%= form_tag(group_search_path) do %>
-  #    <p>"検索"</p>
-  #    <%= text_field_tag "search[title]", session[:search_title] %><%= submit_tag "検索" %>
-  #  <% end %>
-  # end
 end
+

@@ -28,6 +28,18 @@
 <%= link_to 'Edit', edit_store_review_path(@store_review) %> |
 <%= link_to 'Back', store_reviews_path %>
 
+<% if @follow.blank? %>
+    <%= form_with(model: @follow_new) do |form| %>
+        <%= form.hidden_field :followed_user_id, value: @user.id %>
+        <%= form.submit 'フォロー' %>
+    <% end %>
+<% else %>
+  <div>フォロー中</div>
+  <div>
+    <%= link_to 'フォロー解除', followunsubscribe_path(@user.id, method: :delete, data: {confirm: '本当に削除しますか?'}) %>
+  </div>
+<% end %>
+
 <h4>コメント</h4>
 
 <%= form_tag("/store_comments") do %>
@@ -39,6 +51,8 @@
 <% @store_review.store_comments.each do |store_comment| %>
   <%# <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100') %>
   <%= image_tag(url_for(image_of_users_path(store_comment.user_id)),size:'50x50') %>
-  <p><%= store_comment.user.name %><br><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
+  <p><%= store_comment.user.name %></P>
+  <p><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
   <p><%= store_comment.comment %></P>
+  
 <% end %>

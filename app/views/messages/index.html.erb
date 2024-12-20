@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
+<header>
 
 <h1><%= @group.name%></h1>
-
+</header>
+<body>
 <div id="current_user" data-user_id="<%= current_user.id %>">
 </div>
 
@@ -18,5 +20,7 @@
   element.scrollIntoView();
   element.focus();
 </script>
+
+</body>
 
 

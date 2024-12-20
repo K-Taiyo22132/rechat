@@ -77,6 +77,7 @@ class StoreReviewsController < ApplicationController
       format.html { redirect_to store_reviews_url, status: :see_other, notice: "Store review was successfully destroyed." }
       format.json { head :no_content }
     end
+    
     @follow = Follow.find_by(followed_user_id: params[:id , user_id: current_user.id])
     @follow.destroy
     redirect_to profile_path(@follow.followed_user_id)

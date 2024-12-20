@@ -1,18 +1,30 @@
-<p id="notice"><%= notice %></p>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-4"></div>
+      <div class = "col-6">
+        <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Chat</strong>
   <%= link_to 'チャット', messages_path(chat_id: @chat.id) %>
-</p>
+<br>
+<br>
+<br>
+<br>
 
-<p>
   <strong>Review</strong>
   <%= link_to 'レビュー', group_reviews_path%>
+<br>
+<br>
+<br>
+  <%= link_to 'Back', chats_path %>
 </p>  
 
 
 
-<%= link_to 'Back', chats_path %>
 
+
+<%# (chat_id: @chat.id) %>
 <%# (chat_id: @chat.id) %>
 <%# session["selected_group_id_#{current_user.id}"] %>

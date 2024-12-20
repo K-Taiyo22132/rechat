@@ -19,40 +19,31 @@
   <%= @group.category.name %>
 </p>
 
-<p>
-  <%= link_to chat_path do %>
-  <%= image_tag '/images/chat.jpg', size: '70x70' %>
-<% end %>
-<br>
-  <strong>Chat</strong>
-</p>
-
-<p>
-<%= link_to group_reviews_path(group_id:@group.id) do %>
-  <%= image_tag '/images/chat.jpg', size: '70x70' %>
-<% end %>
-<br>
-    <strong>Review</strong>
-</p>  
-
-
-<% if @group.chats.blank? %>
-  <%= form_with(model: @chat) do |form| %>
-    <%= form.hidden_field :group_id, value: @group.id %>
-    <%= form.submit %>
-  <% end %>
-<% else %>
-  <p>
-    <strong>Chat</strong>
-    <%= link_to 'チャット', chat_path(id:@group.chats[0].id) %>
-  </p>
-
-  <p>
-    <strong>Review</strong>
-    <%= link_to 'レビュー', group_reviews_path(group_id:@group.id) %>
-  </p>  
-<% end %>
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <%= link_to chat_path do %>
+        <%= image_tag '/images/chat.jpg', size: '70x70' %>
+      <% end %>
+      <br>
+      <strong>Chat</strong>
+    </div>
+    <div class="col">
+      <%= link_to group_reviews_path(group_id:@group.id) do %>
+        <%= image_tag '/images/review.jpg', size: '70x70' %>
+      <% end %>
+      <br>
+      <strong>Review</strong>
+    </div>
+  </div>
 </div>
+
+
+
+
+</div>
+<br>
+
 <div style="text-align: right;">
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', :back %>

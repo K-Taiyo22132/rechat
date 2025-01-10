@@ -49,7 +49,7 @@
             
             <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
             
-             <%if goods_review.review_image.nil?%> 
+             <%if goods_review.id.nil? or review_image.nil?%> 
               
             
               <div class = "col-md-6">
@@ -57,7 +57,7 @@
               </div> 
               <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
             <%else%> 
-              <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review)),size: '100x100',id:"aikon") %>
+              <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review.id)),size: '100x100',id:"aikon") %>
               <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
             <%end%>
 

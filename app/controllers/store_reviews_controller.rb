@@ -11,6 +11,10 @@ class StoreReviewsController < ApplicationController
 
   # GET /store_reviews/1 or /store_reviews/1.json
   def show
+    @user = User.find(current_user.id)
+    @follow = nil
+    @follow_new = Follow.new
+    @follow = Follow.find_by(followed_user_id: @user.id, user_id: current_user.id)
   end
 
   # GET /store_reviews/new
@@ -32,12 +36,6 @@ class StoreReviewsController < ApplicationController
     @store_review = StoreReview.new(store_review_attributes)
     @store_review.user_id = current_user.id
     @store_review.group_id = session["selected_group_id_#{current_user.id}"]
-    # image_path = Rails.root.join("public/images/","railskame.jpg")
-    # group = Group.find(session["selected_group_id_#{current_user.id}"])
-    # @store_review.category_id = group.category_id
-
-    # @store_review.user_id = current_user.id
-    # @store_review.group_id = session["selected_group_id_#{current_user.id}"]
 
     respond_to do |format|
       if @store_review.save
@@ -66,7 +64,7 @@ class StoreReviewsController < ApplicationController
   # DELETE /store_reviews/1 or /store_reviews/1.json
   def destroy
     @store_review.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to store_reviews_url, status: :see_other, notice: "Store review was successfully destroyed." }
       format.json { head :no_content }

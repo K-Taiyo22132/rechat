@@ -22,15 +22,22 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    @follow = nil
+    @follow_new = Follow.new
+    @follow = Follow.find_by(followed_user_id: @user.id, user_id: current_user.id)
   end
 
   def profile
     @user = User.find(params[:user_id])
+    @follow = nil
     render 'show'
+    @follow_new = Follow.new
+    @follow = Follow.find_by(followed_user_id: @user.id, user_id: current_user.id)
   end
 
 
   def destroy
+
     current_user.destroy
     redirect_to signup_path
   end
@@ -63,7 +70,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :occupation_id)
     end
 
-
+    def follow_params
+      params.require(:follow).permit(:followed_user_id)
+    end
+    
     def user_params_update
       params.require(:user).permit(:name, :profile_image)
     end

@@ -3,7 +3,18 @@ class ReviewHomesController < ApplicationController
 
   # GET /review_homes or /review_homes.json
   def index
-    @review_homes = ReviewHome.all
+    if params[:search].present? && params[:search][:keyword].present?
+      @goods_review = GoodsReview.where("title like '%#{params[:search][:keyword]}%'").order(created_at: :desc)
+      @store_review = StoreReview.where("title like '%#{params[:search][:keyword]}%'").order(created_at: :desc)
+    else
+      @goods_review = GoodsReview.all.order(created_at: :desc)
+      @store_review = StoreReview.all.order(created_at: :desc)
+    end
+    if params[:selectedcategory].present? 
+      @goods_review = @goods_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+      @store_review = @store_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+    end
+   
     @select_categories = SelectCategory.where(user_id: current_user.id)
     session["selected_group_id_#{current_user.id}"] = params[:group_id]
   end
@@ -62,6 +73,8 @@ class ReviewHomesController < ApplicationController
   def send_image
     category = Category.find(params[:id])
     send_data(category.category_image, disposition: :inline)
+    goods_review = GoodsReview.find(params[:id])
+    send_data(goods_review.review_image, disposition: :inline)
   end
   
   private
@@ -74,4 +87,5 @@ class ReviewHomesController < ApplicationController
     def review_home_params
       params.require(:review_home).permit(:category_id, :goods_review_id, :store_review_id, :group_id)
     end
+    
 end

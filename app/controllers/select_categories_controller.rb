@@ -33,10 +33,12 @@ class SelectCategoriesController < ApplicationController
         end
 
         #配列形式で取得したデータを保存する
+        if params[:select_category].present?
          select_category_params[:category_id].each do|category|
             @select_category = SelectCategory.new(user_id: current_user.id,category_id: category)
             @select_category.save!
           end
+        end
       end
       
       #正常終了の時

@@ -6,19 +6,56 @@
       
       <%= text_field_tag "search[keyword]",nil,class: "form-control" %><%= submit_tag "検索" %>
   <% end %>
- <div class="row">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm//swiper@11/swiper-bundle.min.js"></script>
+
+<div class="swiper-container">
+<div class="swiper">
+  <div class="swiper-wrapper">
     <% @select_categories.each do |category| %>
-       
-          <div class="col-md-4 text-center">
-            
-          
-              <td><%= image_tag(url_for(image_of_categories_path(category.category_id)), size: '100x100') %></td>
-            
-            
-          </div>
-        
+      <div class="swiper-slide"><%=
+        link_to image_tag(url_for(image_of_categories_path(category.category_id)),size:'100x100'), review_homes_path(selectedcategory:category.category_id) %>
+        <%# image_tag(url_for(image_of_categories_path(category.category_id)),size: "100x100")%></div> 
     <% end %>
- </div>
+    </div>
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  </div>
+
+  <script>
+  const swiper = new Swiper('.swiper',{
+    direction: 'horizontal',
+    loop: true,
+    centeredSlides: true,
+    slidesPerView:4.8,
+    spaceBetween: 30,
+    navigation:{
+      nextEl:'.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  </script>
+
+  <style>
+  .swiper-container{
+    margin-inline:auto;
+    width: auto;
+    position: relative;
+  }
+  .swiper {
+    max-width: 80%
+  }
+  /*前への矢印*/
+  .swiper-button-prev{
+    left: -30px;
+  }
+  /*次への矢印*/
+  swiper-button-next{
+    right: -30px;
+  }
+  </style>
+ 
 
   <div class="row">
     <% @goods_review.each do |goods_review| %>

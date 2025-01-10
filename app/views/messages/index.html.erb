@@ -1,26 +1,58 @@
 <p id="notice"><%= notice %></p>
 <header>
 
-<h1><%= @group.name%></h1>
+<div style="display: flex; align-items: center;">
+  <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
+  <h1><%= @group.name %></h1>
+</div>
 </header>
 <body>
-<div id="current_user" data-user_id="<%= current_user.id %>">
-</div>
+  <div id="current_user" data-user_id="<%= current_user.id %>"></div>
 
-<div id="messages" data-group_id="<%= @group.id %>">
-  <%= render @messages %>
-</div>
-<form>
-  <label style="color: black;" id="target">新しいメッセージを作成</label><br>
-  <input type="text" id="message_input" data-behavior="group_speaker" class="form-control">
-</form>
+  <div id="messages" data-group_id="<%= @group.id %>">
+    <%= render @messages %>
+  </div>
 
-<script>
-  var element = document.getElementById('message_input');
-  element.scrollIntoView();
-  element.focus();
-</script>
+  <form>
+    <label style="color: black;" id="target">新しいメッセージを作成</label><br>
+    <input type="text" id="message_input" data-behavior="group_speaker" class="form-control">
+  </form>
 
+  <style>
+    /* メッセージ入力フィールドを画面下部に固定する */
+    #message_input {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+
+    /* 必要に応じてフォーム全体を下部に固定したい場合 */
+    form {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #f9f9f9;
+      margin: 10px;
+      box-sizing: border-box;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+
+  <script>
+    // 入力欄に自動的にフォーカスを当てる
+    var element = document.getElementById('message_input');
+    element.focus();
+  </script>
 </body>
+
+<style>
+  h1{
+    font-size: 30px;
+  }
 
 

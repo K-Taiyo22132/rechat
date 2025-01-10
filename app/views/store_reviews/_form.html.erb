@@ -1,8 +1,7 @@
-<%= form_with(model: store_review) do |form| %>
+<%= form_with(model: store_review, class: "container mt-5") do |form| %>
   <% if store_review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(store_review.errors.count, "error") %> prohibited this store_review from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(store_review.errors.count, "error") %> prohibited this review from being saved:</h4>
       <ul>
         <% store_review.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,96 +10,70 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :"レビュー名" %>
-    <%= form.text_field :title %>
+  <h2 class="text-center mb-4">レビュー作成</h2>
+
+  <div class="form-group mb-3">
+    <%= form.label :title, "お店の名前を入力してください", class: "form-label" %>
+    <%= form.text_field :title, placeholder: "お店の名前を入力してください", class: "form-control" %>
   </div>
 
-              
-    <div class="row">
-        
-              
-              
-        <div class="col-md-8 border text-center">
-          <div id="img"></div>
-            <script>
-            // 選択した画像ファイルのプレビューを生成する関数を定義します。
-                function preview(obj) {
-                
-                // 選択した全てのファイルに対してループ処理をします。
-                for (i = 0; i < obj.files.length; i++) {
-                    // FileReaderオブジェクトを作成します。これによりブラウザ上でファイルを読み込むことが可能になります。
-                    let fileReader = new FileReader();
-                    // onloadイベントハンドラを設定します。ファイルが正常に読み込まれたときに呼び出されます。
-                    fileReader.onload = ((e)=> {
-                        // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
-                        // これにより、選択した画像がブラウザ上でプレビュー表示されます。
-                      document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="100" height="100" >';
-                    <% if store_review.review_image.nil? %>
-                      kamera = document.getElementById("kamera");
-                      kamera.style.display = 'none';
-                    <% else %>
-                      aikon = document.getElementById("aikon");
-                      aikon.style.display = 'none';
-                    <% end %>
-                    });
-                    // ファイルをData URLとして読み込みます。
-                    fileReader.readAsDataURL(obj.files[i]);
-                    }
-                }
-            </script>
-            <%= form.label :review_image , "アイコンを選択", class: "btn btn--form" %>
-            <%if store_review.review_image.nil?%> 
-              
-            
-              <div class = "col-md-6">
-                 <%= image_tag '/images/railskame.jpg',size:'150x110',id:"kamera" %>
-              </div> 
-              <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
-            <%else%> 
-              <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100',id:"aikon") %>
-              <%= form.file_field :review_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
-            <%end%>
-           
-        </div>
+  <div class="form-group mb-3">
+    <%= form.label :spot, "場所（必須）", class: "form-label" %>
+    <%= form.text_field :spot, placeholder: "お店の場所を入力してください", class: "form-control" %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :tell, "電話番号（必須）", class: "form-label" %>
+    <%= form.text_field :tell, placeholder: "入力してください", class: "form-control" %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :category_id, "カテゴリー（必須）", class: "form-label" %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { prompt: "お店のカテゴリーを入力してください" }, class: "form-select" %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :evaluation, "評価（必須）", class: "form-label" %>
+    <div class="star-rating">
+      <%= form.select :evaluation, [["★☆☆☆☆", 1], ["★★☆☆☆", 2], ["★★★☆☆", 3], ["★★★★☆", 4], ["★★★★★", 5]], {}, class: "form-select" %>
     </div>
-
-  <div class="field">
-    <%= form.label :"レビュー本文" %>
-    <%= form.text_area :review %>
   </div>
 
-  <div class="field">
-    <%= form.label :"場所" %>
-    <%= form.text_field :spot %>
+  <div class="form-group mb-3">
+    <%= form.label :review_image, "画像（任意）", class: "form-label" %>
+    <div class="text-center mb-3">
+      <div id="img" class="border p-3" style="width: 150px; height: 150px;">
+        <% if store_review.review_image.present? %>
+          <%= image_tag(url_for(image_of_store_reviews_path(@store_review)), id: "aikon", class: "img-fluid h-100 w-100") %>
+        <% else %>
+          <class="bi bi-camera" style="font-size: 2rem; line-height: 150px;"></i>
+        <% end %>
+      </div>
+    </div>
+    <%= form.file_field :review_image, class: "form-control", onchange: "preview(this);" %>
+    <script>
+      function preview(obj) {
+        for (let i = 0; i < obj.files.length; i++) {
+          let fileReader = new FileReader();
+          fileReader.onload = (e) => {
+            document.querySelector('#img').innerHTML = `<img src="${e.target.result}" class="img-fluid h-100 w-100">`;
+          };
+          fileReader.readAsDataURL(obj.files[i]);
+        }
+      }
+    </script>
   </div>
 
-  <div class="field">
-    <%= form.label :"電話番号" %>
-    <%= form.text_field :tell %>
+  <div class="form-group mb-3">
+    <%= form.label :review, "レビュー本文（必須）", class: "form-label" %>
+    <%= form.text_area :review, placeholder: "レビューを入力してください", class: "form-control", rows: 5 %>
   </div>
 
-   
-
-  <%# <div>
-    <%= session["selected_group_id_#{current_user.id}"]%>
-  <%# </div> %>
-  <div class="field">
-    <%= form.label :"カテゴリーID" %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
+  <div class="text-center">
+    <%= form.submit "投稿", class: "btn btn-primary px-5" %>
   </div>
-
-  <div class="field">
-    <%= form.label :"評価" %>
-    <%= form.select :evaluation, StoreReview.evaluations.keys.to_a, {include_blank: true}, class:'form-control' %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-  
 <% end %>
+
 
 
  <%# <div class="field"> %>
@@ -108,3 +81,8 @@
     <%# <%= form.text_field :review_image %>
     <%# <%= form.file_field :review_image %> 
   <%# </div> %>
+
+<style>
+h2{
+  font-size: 40px;
+}

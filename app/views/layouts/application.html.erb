@@ -12,30 +12,7 @@
 
   <body>
     <div class = "container">
-      <div class = "row">
 
-          <% if home %>
-            <thead>
-              <tr>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-        <tbody>
-          <% @grouplist.each do |chat| %>
-            <tr>
-              <td>
-                <%= link_to image_tag(url_for(image_of_groups_path(chat.group.id)), size: '70x70'), group_path(chat.group.id) %>
-              </td>
-              <td>
-                <%= link_to chat.group.name, chat %>
-              </td>
-            </tr>
-            <br>
-          <% end %>
-        </tbody>
-        <% end %>
-          
-        </div>
 
       
     <%= yield %>
@@ -51,23 +28,26 @@
   </body>
   <foot>
 <div class="container">
-  <div class="row justify-content-center">
-    <% if logged_in? %>
-    <div class="col-3">
-      <%= link_to "ホーム", chats_path, class: "btn btn-info w-100", role: "button" %>
+  <nav class="fixed-bottom bg-body-tertiary">
+    <div class="row text-center">
+      <% if logged_in? %>
+        <div class="col" style="margin-bottom: 30px;">
+          <%= link_to "ホーム", chats_path, class: "btn btn-info w-100", role: "button" %>
+        </div>
+        <div class="col" style="margin-bottom: 30px;">
+          <%= link_to "フォロー", chats_path, class: "btn btn-info w-100", role: "button" %>
+        </div>
+        <div class="col" style="margin-bottom: 30px;">
+          <%= link_to "レビュー", review_homes_path, class: "btn btn-info w-100", role: "button" %>
+        </div>
+        <div class="col" style="margin-bottom: 30px;">
+          <%= link_to "プロフィール", profile_path(current_user.id), class: "btn btn-info w-100", role: "button" %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-3">
-      <%= link_to "フォロー", chats_path, class: "btn btn-info w-100", role: "button" %>
-    </div>
-    <div class="col-3">
-      <%= link_to "レビュー", review_homes_path, class: "btn btn-info w-100", role: "button" %>
-    </div>
-    <div class="col-3">
-      <%= link_to "プロフィール", profile_path(current_user.id), class: "btn btn-info w-100", role: "button" %>
-    </div>
-    <% end %>
-  </div>
+  </nav>
 </div>
+
 
 </html>
 

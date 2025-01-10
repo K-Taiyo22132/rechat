@@ -18,14 +18,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    @follow = Follow.new(follow_@params)
-    @follow.user_id =current_user.id
-
-    if@follow.save
-      redirect_to profile_path(@follow.followed_user_id)
-    else
-      redirect_to profile_path(@follow.followed_user_id)
-    end
   end
 
   def show
@@ -45,9 +37,6 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @follow = Follow.find_by(followed_user_id: params[:id , user_id: current_user.id])
-    @follow.destroy
-    redirect_to profile_path(@follow.followed_user_id)
 
     current_user.destroy
     redirect_to signup_path

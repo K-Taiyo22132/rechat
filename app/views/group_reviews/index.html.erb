@@ -10,7 +10,8 @@
   <div class="swiper-wrapper">
     <% @select_categories.each do |category| %>
       <div class="swiper-slide"><%=
-        image_tag(url_for(image_of_categories_path(category.category_id)),size: "100x100")%></div>
+        link_to image_tag(url_for(image_of_categories_path(category.category_id)),size:'100x100'), group_reviews_path(selectedcategory:category.category_id)
+        %></div>
     <% end %>
     </div>
   </div>

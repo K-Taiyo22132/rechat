@@ -15,7 +15,7 @@
     <% @select_categories.each do |category| %>
       <div class="swiper-slide"><%=
         link_to image_tag(url_for(image_of_categories_path(category.category_id)),size:'100x100'), review_homes_path(selectedcategory:category.category_id) %>
-        <%# image_tag(url_for(image_of_categories_path(category.category_id)),size: "100x100")%></div> 
+        </div> 
     <% end %>
     </div>
   </div>

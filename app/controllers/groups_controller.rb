@@ -8,7 +8,12 @@ class GroupsController < ApplicationController
     else
       @groups = Group.all.order(created_at: :desc)
     end
-    
+    if params[:selectedcategory].present? 
+      @groups = @groups.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+    end
+
+    @select_categories = SelectCategory.where(user_id: current_user.id)
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
     
   end
 

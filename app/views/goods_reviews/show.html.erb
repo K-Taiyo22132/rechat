@@ -1,34 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>タイトル:</strong>
+<h1>
   <%= @goods_review.title %>
-</p>
+</h1>
 
 <p>
-  <strong>画像:</strong>
-  <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review)),size: '100x100') %>
+  <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review))) %>
 </p>
 
-<p>
+<h2>
   <strong>レビュー:</strong>
   <%= @goods_review.review %>
-</p>
+</h2>
 
-<p>
+<h2>
   <strong>価格:</strong>
   <%= @goods_review.price %><%= '円' %>
-</p>
+</h2>
 
-<p>
-  <strong>カテゴリー:</strong>
-  <%= @goods_review.category.name %>
-</p>
-
-<p>
+<h3>
   <strong>評価:</strong>
   <%= @goods_review.evaluation %>
-</p>
+</h3>
 <%= link_to 'Edit', edit_goods_review_path(@goods_review) %> |
 <%= link_to 'Back', goods_reviews_path %>
 
@@ -45,3 +38,14 @@
   <p><%= goods_comment.user.name %><br><%= goods_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
   <p><%= goods_comment.comment %></P>
 <% end %>
+
+<style>
+  h1{
+    text-align: center;
+  }
+  h2{
+    font-size: 20px;
+  }
+  h3{
+    font-size: 35px;
+  }

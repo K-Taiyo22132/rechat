@@ -2,37 +2,56 @@
 
 <h1>商品レビュー</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Review image</th>
-      <th>Review</th>
-      <th>Evaluation</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container mt-4">
+  <div class="row">
     <% @goods_reviews.each do |goods_review| %>
-      <tr>
-        <td><%= goods_review.title %></td>
-        <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100') %></td>
-        <td><%= goods_review.review %></td>
-        <td><%= goods_review.evaluation %></td>
-        <td><%= goods_review.price %><%= '円' %></td>
-        <td><%= goods_review.category.name %></td>
-
-        <td><%= link_to 'Show', goods_review %></td>
-        <td><%= link_to 'Edit', edit_goods_review_path(goods_review) %></td>
-        <td><%= link_to 'Destroy', goods_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-4">
+        <a href="<%= goods_review_path(goods_review) %>" class="text-decoration-none">
+          <div class="card mb-4" style="cursor: pointer;">
+            <%= image_tag(url_for(image_of_goods_reviews_path(goods_review)), class: "card-img-top custom-image") %>
+            <div class="card-body">
+              <h5 class="card-title text-dark"><%= goods_review.title %></h5>
+              <%# <p class="card-text text-muted"> %>
+                <%# <%= truncate(goods_review.review, length: 200) %>
+              <%# </p> %>
+            </div>
+              <div class="card-footer text-muted">
+                <%= time_ago_in_words(goods_review.created_at) %> 前
+              </div>
+          </div>
+        </a>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
+<br><br>
 
-<%= link_to '商品レビュー投稿', new_goods_review_path %>
+<%= link_to '商品レビュー投稿', new_goods_review_path, class: "btn btn-light" %>
+
+<style>
+  .card {
+    height: 200px;
+  }
+
+  .custom-image {
+    width: 80%;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: 0.3s;
+  }
+</style>
+

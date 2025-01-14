@@ -1,7 +1,8 @@
-<%= form_with(model: goods_review) do |form| %>
+<%= form_with(model: goods_review, class: "container mt-5") do |form| %>
   <% if goods_review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(goods_review.errors.count, "error") %> prohibited this goods_review from being saved:</h2>
+  
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= pluralize(goods_review.errors.count, "error") %> prohibited this goods_review from being saved:</h4>
 
       <ul>
         <% goods_review.errors.each do |error| %>
@@ -11,9 +12,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <h2 class="text-center mb-4">レビュー作成</h2>
+
+  <div class="form-group mb-3">
+    <%= form.label :title, "商品名（必須）", class: "form-label" %>
+    <%= form.text_field :title, placeholder: "商品の名前を入力してください", class: "form-control" %>
   </div>
 
   <div class="row">
@@ -64,20 +67,20 @@
         </div>
     </div>
 
-  <div class="field">
-    <%= form.label :review %>
-    <%= form.text_area :review %>
+  <div class="form-group mb-3">
+    <%= form.label :review, "レビュー本文（必須）", class: "form-label" %>
+    <%= form.text_area :review, placeholder: "レビューを入力してください", class: "form-control", rows: 5 %>
   </div>
 
-    <div class="field">
-        <%= form.label :price %>
+  <div class="form-group mb-3">
+        <%= form.label :price, "価格（必須）", class: "form-label" %>
         <%= form.text_field :price %> 
     </div>  
       
   
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
+  <div class="form-group mb-3">
+    <%= form.label :category_id, "カテゴリー（必須）", class: "form-label" %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { prompt: "お店のカテゴリーを入力してください" }, class: "form-select" %>
   </div>
 
   <%# <div class="field">
@@ -94,13 +97,20 @@
     <%= session["selected_group_id_#{current_user.id}"]%>
   <%# </div> %>
 
-  <div class="field">
-    <%= form.label :evaluation %>
-    <%= form.select :evaluation, GoodsReview.evaluations.keys.to_a, {include_blank: true}, class:'form-control' %>
+<div class="form-group mb-3">
+    <%= form.label :evaluation, "評価（必須）", class: "form-label" %>
+    <div class="star-rating">
+      <%= form.select :evaluation, [["★☆☆☆☆", 1], ["★★☆☆☆", 2], ["★★★☆☆", 3], ["★★★★☆", 4], ["★★★★★", 5]], {}, class: "form-select" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit "投稿", class: "btn btn-primary px-5" %>
   </div>
+</div>
 
 <% end %>
+<style>
+h2{
+  font-size: 40px;
+}

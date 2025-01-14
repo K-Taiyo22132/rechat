@@ -4,33 +4,35 @@
   <%= @store_review.title %>
 </h1>
 
-<p>
-  <strong>場所:</strong>
+<h2>
+  <strong>場所:　　</strong>
   <%= @store_review.spot %>
-</p>
+</h2>
 
-<p>
+<h2>
   <strong>電話番号:</strong>
   <%= @store_review.tell %>
-</p>
+</h2>
+
+<h3>
+  <strong>評価:</strong>
+  <%= @store_review.evaluation %>
+</h3>
+
 
 <p>
   <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '%') %>
 </p>
 
-<p>
-  <strong>評価:</strong>
-  <%= @store_review.evaluation %>
-</p>
 
 <%= link_to 'Edit', edit_store_review_path(@store_review) %> |
 <%= link_to 'Back', store_reviews_path %>
 
 <h4>コメント</h4>
-
 <%= form_tag("/store_comments") do %>
   <%= hidden_field :store_comment, :store_review_id, value: @store_review.id %>
-  <%= text_area :store_comment, :comment %>
+  <%= text_area :store_comment, :comment, class: 'form-control', id: 'floatingTextarea2', style: 'height:50px' %>
+  <br>
   <%= submit_tag "コメント追加" %>
 <% end %>
 
@@ -42,3 +44,14 @@
   <p><%= store_comment.comment %></P>
   
 <% end %>
+
+<style>
+  h1{
+    text-align: center;
+  }
+  h2{
+    font-size: 20px;
+  }
+  h3{
+    font-size: 35px;
+  }

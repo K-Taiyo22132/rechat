@@ -74,7 +74,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @chat = Chat.new
+    @chat = Chat.find_by(group_id:params[:id])
+    if @chat.nil?
+      @chat = Chat.new
+    end
+    session["selected_group_id_#{current_user.id}"] = params[:id]
   end
 
   def send_image

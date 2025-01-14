@@ -4,6 +4,7 @@ class GroupReviewsController < ApplicationController
   # GET /group_reviews or /group_reviews.json
   def index
     @group_reviews = GroupReview.all
+    # @group = GroupReview.find(Chat.find(params[:chat_id].group_id))
 
     #session["selected_group_id_#{current_user.id}"] = params[:group_id]
     @select_categories = SelectCategory.where(user_id: current_user.id)

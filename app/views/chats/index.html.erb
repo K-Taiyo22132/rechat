@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to image_tag(url_for(image_of_groups_path(chat.group.id)),size:'100x100'), group_path(chat.group.id) %></td> 
         <td><%= link_to chat.group.name, chat_path(id:chat.id,group_id:chat.group.id) %></td>
-        <td><%= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '退出する', chat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

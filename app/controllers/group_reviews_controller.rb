@@ -7,11 +7,15 @@ class GroupReviewsController < ApplicationController
     # @group = GroupReview.find(Chat.find(params[:chat_id].group_id))
 
     #session["selected_group_id_#{current_user.id}"] = params[:group_id]
+    
     @select_categories = SelectCategory.where(user_id: current_user.id)
     
       @goods_review = GoodsReview.where("group_id=?",session["selected_group_id_#{current_user.id}"]).order(created_at: :desc)
       @store_review = StoreReview.where("group_id=?",session["selected_group_id_#{current_user.id}"]).order(created_at: :desc)
-      
+      if params[:selectedcategory].present? 
+        @goods_review = @goods_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+        @store_review = @store_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+      end
   end
 
   # GET /group_reviews/1 or /group_reviews/1.json

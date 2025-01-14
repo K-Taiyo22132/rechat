@@ -8,7 +8,12 @@ class GroupsController < ApplicationController
     else
       @groups = Group.all.order(created_at: :desc)
     end
-    
+    if params[:selectedcategory].present? 
+      @groups = @groups.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
+    end
+
+    @select_categories = SelectCategory.where(user_id: current_user.id)
+    session["selected_group_id_#{current_user.id}"] = params[:group_id]
     
   end
 
@@ -69,7 +74,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @chat = Chat.new
+    @chat = Chat.find_by(group_id:params[:id])
+    if @chat.nil?
+      @chat = Chat.new
+    end
+    session["selected_group_id_#{current_user.id}"] = params[:id]
   end
 
   def send_image

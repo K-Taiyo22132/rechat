@@ -19,10 +19,16 @@
   <%= @group.category.name %>
 </p>
 
+<% if @group.chats.blank? %>
+  <%= form_with(model: @chat) do |form| %>
+    <%= form.hidden_field :group_id, value: @group.id %>
+    <%= form.submit %>
+  <% end %>
+<% end %>
 <div class="container">
   <div class="row text-center">
     <div class="col">
-      <%= link_to chat_path do %>
+      <%= link_to messages_path(chat_id: @chat.id) do %>
         <%= image_tag '/images/chat.jpg', size: '70x70' %>
       <% end %>
       <br>
@@ -45,6 +51,5 @@
 <br>
 
 <div style="text-align: right;">
-<%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', :back %>
 </div>

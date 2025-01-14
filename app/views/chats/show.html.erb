@@ -1,25 +1,52 @@
+<div class="container">
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <div style="display: flex; align-items: center;">
+      <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px; font-size: 30px;" %>
+    </div>
+  </div>
 
-<div class = "container">
-  <div class = "row">
-    <div class = "col-md-4"></div>
-      <div class = "col-6">
-        <p id="notice"><%= notice %></p>
+  <div class="spacer" style="margin-top: 250px;"></div>
 
-<p>
-  <strong>Chat</strong>
-  <%= link_to 'チャット', messages_path(chat_id: @chat.id) %>
-<br>
-<br>
-<br>
-<br>
+  <div class="container">
+    <div class="col">
+      <div class="row d-flex justify-content-around">
+        <div class="col text-center">
+          <%= link_to messages_path(chat_id: @chat.id) do %>
+            <%= image_tag '/images/chat.jpg', size: '70x70' %>
+          <% end %>
+          <br>
+          <strong>Chat</strong>
+        </div>
+        <div class="col text-center">
+          <%= link_to group_reviews_path(chat_id: @chat.id) do %>
+            <%= image_tag '/images/review.jpg', size: '70x70' %>
+          <% end %>
+          <br>
+          <strong>Review</strong>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
 
-  <strong>Review</strong>
-  <%= link_to 'レビュー', group_reviews_path%>
-<br>
-<br>
-<br>
-  <%= link_to 'Back', chats_path %>
-</p>  
+<style>
+  .row {
+    display: flex;
+    justify-content: space-around; /* 子要素を左右均等に配置 */
+    align-items: center;          /* 垂直方向で中央揃え */
+  }
+
+  .col {
+    text-align: center;           /* コンテンツを中央揃え */
+  }
+
+  .spacer {
+    margin-top: 150px;            /* 空白を調整 */
+  }
+</style>
+
 
 
 

@@ -4,6 +4,12 @@ class FollowsController < ApplicationController
   # GET /follows or /follows.json
   def index
     @follows = Follow.all
+    @follow_user = Follow.where(user_id:current_user.id)
+    ids = []
+    @follow_user.each do |user|
+      ids << user.followed_user_id
+    end
+    @goods_reviews = GoodsReview.where(user_id: ids)
   end
 
   # GET /follows/1 or /follows/1.json

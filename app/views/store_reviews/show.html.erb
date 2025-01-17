@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div style="display: flex; align-items: center;">
+  <%= link_to "＜", store_reviews_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
+</div>
 <h1>
   <%= @store_review.title %>
 </h1>
@@ -21,7 +23,7 @@
 
 
 <p>
-  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '%') %>
+  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)), style: "max-width: 100%; height: auto;") %>
 </p>
 
 <h2>
@@ -29,15 +31,19 @@
   <%= @store_review.review %>
 </h2>
 
-<%= link_to 'Edit', edit_store_review_path(@store_review) %> |
-<%= link_to 'Back', store_reviews_path %>
+<% if current_user == @user %>
+<div style="text-align: right;">
+  <%= link_to '編集する', edit_store_review_path(@store_review) %>
+</div>
+<% end%>
 
 <h4>コメント</h4>
 <%= form_tag("/store_comments") do %>
   <%= hidden_field :store_comment, :store_review_id, value: @store_review.id %>
   <%= text_area :store_comment, :comment, class: 'form-control', id: 'floatingTextarea2', style: 'height:50px' %>
-  <br>
-  <%= submit_tag "コメント追加" %>
+  <div style="text-align: right;">
+    <%= submit_tag "コメント追加" %>
+    </div>
 <% end %>
 
 <% @store_review.store_comments.each do |store_comment| %>
@@ -59,3 +65,4 @@
   h3{
     font-size: 35px;
   }
+</style>

@@ -86,30 +86,7 @@
     </div>
   </div>
 
-  <div class="form-group mb-3">
-    <%= form.label :review_image, "画像（任意）", class: "form-label" %>
-    <div class="text-center mb-3">
-      <div id="img" class="border p-3" style="width: 150px; height: 150px;">
-        <% if store_review.review_image.present? %>
-          <%= image_tag(url_for(image_of_store_reviews_path(@store_review)), id: "aikon", class: "img-fluid h-100 w-100") %>
-        <% else %>
-          <class="bi bi-camera" style="font-size: 2rem; line-height: 150px;"></i>
-        <% end %>
-      </div>
-    </div>
-    <%= form.file_field :review_image, class: "form-control", onchange: "preview(this);" %>
-    <script>
-      function preview(obj) {
-        for (let i = 0; i < obj.files.length; i++) {
-          let fileReader = new FileReader();
-          fileReader.onload = (e) => {
-            document.querySelector('#img').innerHTML = `<img src="${e.target.result}" class="img-fluid h-100 w-100">`;
-          };
-          fileReader.readAsDataURL(obj.files[i]);
-        }
-      }
-    </script>
-  </div>
+ 
 
   <div class="form-group mb-3">
     <%= form.label :review, "レビュー本文（必須）", class: "form-label" %>

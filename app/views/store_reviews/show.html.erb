@@ -5,7 +5,7 @@
 </h1>
 
 <h2>
-  <strong>場所:　　</strong>
+  <strong>場所:</strong>
   <%= @store_review.spot %>
 </h2>
 
@@ -24,6 +24,10 @@
   <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '%') %>
 </p>
 
+<h2>
+  <strong>レビュー:</strong>
+  <%= @store_review.review %>
+</h2>
 
 <%= link_to 'Edit', edit_store_review_path(@store_review) %> |
 <%= link_to 'Back', store_reviews_path %>

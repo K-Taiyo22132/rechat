@@ -54,7 +54,8 @@
       
  
 
- <div class="row">
+<div class="container mt-4">
+  <div class="row">
     <% @goods_review.each do |goods_review| %>
        
           <div class="col-md-6">
@@ -97,6 +98,10 @@
     <% end %>
  </div>
 
-<%= link_to 'レビュー投稿', select_reviews_path %>
+
+<%= link_to 'お店レビュー表示',store_reviews_path %>
+<%= link_to '商品レビュー表示',goods_reviews_path %>
 
 <%# <%= link_to 'New Group Review', new_group_review_path %> 
+<br>
+<%= link_to 'レビュー投稿', select_reviews_path, class: "btn btn-light" %>

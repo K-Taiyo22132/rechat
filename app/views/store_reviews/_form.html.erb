@@ -36,6 +36,8 @@
     <%= form.label :evaluation, "評価（必須）", class: "form-label" %>
     <div class="star-rating">
       <%= form.select :evaluation, [["★☆☆☆☆", 1], ["★★☆☆☆", 2], ["★★★☆☆", 3], ["★★★★☆", 4], ["★★★★★", 5]], {}, class: "form-select" %>
+    </div>
+  </div>
               
     <div class="row">
         
@@ -87,6 +89,7 @@
   </div>
 
  
+
 
   <div class="form-group mb-3">
     <%= form.label :review, "レビュー本文（必須）", class: "form-label" %>

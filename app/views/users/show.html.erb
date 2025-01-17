@@ -2,7 +2,13 @@
 <div style="text-align: center;">
 <h1 style="font-size: 30px;">利用者プロフィール</h1>
 <br>
-<p><%= image_tag(url_for(image_of_users_path(@user)), size: '200x200')%></p>
+<p>
+  <%= image_tag(
+    url_for(image_of_users_path(@user)),
+    size: '200x200',
+    style: 'border-radius: 50%; object-fit: cover; width: 200px; height: 200px;'
+  ) %>
+</p>
 <br>
 <p style="font-size: 30px;"><%= @user.name %></p>
 <br>

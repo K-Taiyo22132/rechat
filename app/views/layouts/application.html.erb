@@ -31,11 +31,12 @@
   <nav class="fixed-bottom bg-body-tertiary">
     <div class="row text-center">
       <% if logged_in? %>
+        <%if (controller.controller_name != "messages") %>
         <div class="col" style="margin-bottom: 30px;">
           <%= link_to "ホーム", chats_path, class: "btn btn-info w-100", role: "button" %>
         </div>
         <div class="col" style="margin-bottom: 30px;">
-          <%= link_to "フォロー", chats_path, class: "btn btn-info w-100", role: "button" %>
+          <%= link_to "フォロー", follows_path, class: "btn btn-info w-100", role: "button" %>
         </div>
         <div class="col" style="margin-bottom: 30px;">
           <%= link_to "レビュー", review_homes_path, class: "btn btn-info w-100", role: "button" %>
@@ -43,6 +44,7 @@
         <div class="col" style="margin-bottom: 30px;">
           <%= link_to "プロフィール", profile_path(current_user.id), class: "btn btn-info w-100", role: "button" %>
         </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -55,3 +57,4 @@
 .br1{
   border-right: 2px solid;
 }
+</style>

@@ -10,6 +10,7 @@ class FollowsController < ApplicationController
       ids << user.followed_user_id
     end
     @goods_reviews = GoodsReview.where(user_id: ids)
+    @store_reviews = StoreReview.where(user_id: ids)
   end
 
   # GET /follows/1 or /follows/1.json

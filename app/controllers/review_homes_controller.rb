@@ -14,6 +14,7 @@ class ReviewHomesController < ApplicationController
       @goods_review = @goods_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
       @store_review = @store_review.where("category_id=?",params[:selectedcategory]).order(created_at: :desc)
     end
+    
    
     @select_categories = SelectCategory.where(user_id: current_user.id)
     session["selected_group_id_#{current_user.id}"] = params[:group_id]

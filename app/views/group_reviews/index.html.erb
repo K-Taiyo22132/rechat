@@ -61,7 +61,8 @@
           <div class="col-md-6">
             <table>
               <tr>
-              <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100') %></td>
+              <td><%= link_to image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100'), goods_review_path(goods_review) %></td>
+              <%# <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100')</td>  %>
               </tr>
               <tr>
               <td><%= goods_review.title%></td>
@@ -81,7 +82,8 @@
           <div class="col-md-6">
             <table>
               <tr>
-              <td><%= image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100') %></td>
+                <td><%= link_to image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100'), store_review_path(store_review) %></td>
+              <%# <td><%= image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100')</td>  %>
               </tr>
               <tr>
               <td><%= store_review.title%></td>

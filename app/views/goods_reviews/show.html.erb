@@ -5,7 +5,11 @@
 </h1>
 
 <p>
-  <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review))) %>
+<div class="image-container">
+  <%= image_tag(url_for(image_of_goods_reviews_path(@goods_review)), class: "img-fluid") %>
+</div>
+
+
 </p>
 
 <h2>
@@ -25,12 +29,15 @@
 <%= link_to 'Edit', edit_goods_review_path(@goods_review) %> |
 <%= link_to 'Back', goods_reviews_path %>
 
-<h4>コメント</h4>
 
+
+<h4>コメント</h4>
 <%= form_tag("/goods_comments") do %>
   <%= hidden_field :goods_comment, :goods_review_id, value: @goods_review.id %>
-  <%= text_area :goods_comment, :comment %>
-  <%= submit_tag "コメント追加" %>
+  <%= text_area :goods_comment, :comment, class: 'form-control', id: 'floatingTextarea2', style: 'height:50px' %>
+  <div style="text-align: right;">
+    <%= submit_tag "コメント追加" %>
+  </div>
 <% end %>
 
 <% @goods_review.goods_comments.each do |goods_comment| %>
@@ -49,4 +56,9 @@
   h3{
     font-size: 35px;
   }
+  .image-container {
+  max-width: 300px; /* 必要な幅に制限 */
+  margin: 0 auto;   /* センター配置（オプション） */
+}
+
 </style>

@@ -24,14 +24,16 @@
 
     </div>
     </div>
-    <hr>
+
   </body>
-  <foot>
+  
+      <% if logged_in? %>
+        <%if (controller.controller_name != "messages") %>
+<foot>
 <div class="container">
   <nav class="fixed-bottom bg-body-tertiary">
     <div class="row text-center">
-      <% if logged_in? %>
-        <%if (controller.controller_name != "messages") %>
+
         <div class="col" style="margin-bottom: 30px;">
           <%= link_to "ホーム", chats_path, class: "btn btn-info w-100", role: "button" %>
         </div>
@@ -44,12 +46,12 @@
         <div class="col" style="margin-bottom: 30px;">
           <%= link_to "プロフィール", profile_path(current_user.id), class: "btn btn-info w-100", role: "button" %>
         </div>
+
+    </div>
+  </nav>
+</div>
         <% end %>
       <% end %>
-    </div>
-  </div>
-</div>
-
 
 </html>
 

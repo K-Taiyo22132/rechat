@@ -53,50 +53,78 @@
   </style>
       
  
-
+<h2>商品レビュー</h2>
 <div class="container mt-4">
   <div class="row">
     <% @goods_review.each do |goods_review| %>
-       
-          <div class="col-md-6">
-            <table>
-              <tr>
-              <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100') %></td>
-              </tr>
-              <tr>
-              <td><%= goods_review.title%></td>
-              </tr>
-              <tr>
-              <td><%= goods_review.review%></td>
-              </tr>
-            </table>
-            
-            
-            
+      <div class="col-md-4">
+        <div class="card mb-4" style="cursor: pointer;">
+          <%= image_tag(url_for(image_of_goods_reviews_path(goods_review)), class: "card-img-top custom-image") %>
+          <div class="card-body">
+            <h5 class="card-title text-dark"><%= goods_review.title %></h5>
+            <p class="card-text text-muted"><%= truncate(goods_review.review, length: 100) %></p>
           </div>
-        
+          <div class="card-footer text-muted">
+            <%= time_ago_in_words(goods_review.created_at) %> 前
+          </div>
+        </div>
+      </div>
     <% end %>
+<br>
+
+<h2>お店レビュー</h2>
+<br>
     <% @store_review.each do |store_review| %>
-       
-          <div class="col-md-6">
-            <table>
-              <tr>
-              <td><%= image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100') %></td>
-              </tr>
-              <tr>
-              <td><%= store_review.title%></td>
-              </tr>
-              <tr>
-              <td><%= store_review.review%></td>
-              </tr>
-            </table>
-            
-            
-            
+      <div class="col-md-4">
+        <div class="card mb-4" style="cursor: pointer;">
+          <%= image_tag(url_for(image_of_store_reviews_path(store_review)), class: "card-img-top custom-image") %>
+          <div class="card-body">
+            <h5 class="card-title text-dark"><%= store_review.title %></h5>
+            <p class="card-text text-muted"><%= truncate(store_review.review, length: 100) %></p>
           </div>
-        
+          <div class="card-footer text-muted">
+            <%= time_ago_in_words(store_review.created_at) %> 前
+          </div>
+        </div>
+      </div>
     <% end %>
- </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    height: 100%;
+  }
+
+  .custom-image {
+    display: block; /* ブロック要素化 */
+    margin: 0 auto; /* 中央揃え */
+    width: 80%; /* コンテナ幅にフィット */
+    height: 150px; /* 高さを統一 */
+    object-fit: cover; /* サイズに収めつつ切り抜き */
+  }
+
+  .card-body {
+    text-align: center; /* タイトルやテキストも中央揃え */
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: 0.3s;
+  }
+</style>
+
+
+
 
 
 <%= link_to 'お店レビュー表示',store_reviews_path %>

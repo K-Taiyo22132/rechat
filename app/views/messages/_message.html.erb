@@ -9,7 +9,8 @@
     users_profile_path(user_id: message.user.id)
   ) %>
 </p>
-<p class="<%= message.id %>" style="font-size: 16px;"><%= message.message %></p>
+<p class="<%= message.id %>" style="font-size: 16px;"><%= safe_join(customize(message.message),tag(:br)) %></p>
+
 <p class="<%= message.id %>" style="font-size: 16px;" %><%= message.created_at.strftime("%H:%M") %></p>
 
 <script>

@@ -7,7 +7,7 @@
 </h1>
 
 <h2>
-  <strong>場所:　　</strong>
+  <strong>場所:</strong>
   <%= @store_review.spot %>
 </h2>
 
@@ -28,6 +28,10 @@
   </div>
 </p>
 
+<h2>
+  <strong>レビュー:</strong>
+  <%= @store_review.review %>
+</h2>
 
 <% if current_user == @user %>
 <div style="text-align: right;">
@@ -49,7 +53,7 @@
   <%= image_tag(url_for(image_of_users_path(store_comment.user_id)),size:'50x50') %>
   <p><%= store_comment.user.name %></P>
   <p><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
-  <p><%= store_comment.comment %></P>
+  <p><%= simple_format(store_comment.comment) %></P>
   
 <% end %>
 

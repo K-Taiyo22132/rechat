@@ -80,7 +80,7 @@
   
   <div class="form-group mb-3">
     <%= form.label :category_id, "カテゴリー（必須）", class: "form-label" %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { prompt: "お店のカテゴリーを入力してください" }, class: "form-select" %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { prompt: "商品のカテゴリーを入力してください" }, class: "form-select" %>
   </div>
 
   <%# <div class="field">

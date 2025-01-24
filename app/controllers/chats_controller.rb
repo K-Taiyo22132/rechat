@@ -3,7 +3,12 @@ class ChatsController < ApplicationController
 
   # GET /chats or /chats.json
   def index
-    @chats = Chat.all
+    if params[:search].present? && params[:search][:keyword].present?
+      @chats = Chat.joins(:group).where("groups.name like '%#{params[:search][:keyword]}%'").order(created_at: :desc)
+    else
+      @chats = Chat.all.order(created_at: :desc)
+    end
+   
   end
 
   # GET /chats/1 or /chats/1.json

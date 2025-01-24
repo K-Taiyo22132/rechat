@@ -4,7 +4,9 @@
 
     <p id="notice"><%= notice %></p>
     <h1>ホーム</h1>
+     
 
+    
     <%= form_tag(chats_path, method: :get) do %>
       <%= text_field_tag "search[keyword]", nil, placeholder: "🔍 検索", class: "form-control" %>
       <br>

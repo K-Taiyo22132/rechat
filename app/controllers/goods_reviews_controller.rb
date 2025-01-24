@@ -79,9 +79,15 @@ class GoodsReviewsController < ApplicationController
     end
 
     def goods_review_attributes
+      if goods_review_params[:review_image].nil?
+        {
+          title: goods_review_params[:title], review: goods_review_params[:review], evaluation: goods_review_params[:evaluation].to_i, price: goods_review_params[:price], category_id: goods_review_params[:category_id]
+        }
+      else
       {
         title: goods_review_params[:title], review_image: goods_review_params[:review_image].read, review: goods_review_params[:review], evaluation: goods_review_params[:evaluation].to_i, price: goods_review_params[:price], category_id: goods_review_params[:category_id]
       }
+      end
     end
     
 end

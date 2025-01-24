@@ -88,10 +88,15 @@ class StoreReviewsController < ApplicationController
     end
 
     def store_review_attributes
-      
-      {
-        title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation].to_i, category_id:store_review_params[:category_id]
-      }
+      if store_review_params[:review_image].nil?
+        {
+        title: store_review_params[:title], review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation].to_i, category_id:store_review_params[:category_id]
+        }
+      else
+        {
+          title: store_review_params[:title], review_image: store_review_params[:review_image].read, review: store_review_params[:review], spot: store_review_params[:spot], tell: store_review_params[:tell], evaluation:store_review_params[:evaluation].to_i, category_id:store_review_params[:category_id]
+        }
+      end
     end
 
     # def search

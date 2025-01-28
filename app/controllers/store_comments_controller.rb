@@ -3,7 +3,7 @@ class StoreCommentsController < ApplicationController
 
   # GET /store_comments or /store_comments.json
   def index
-    @store_comments = StoreComment.all.order(created_at: :desc)
+    @store_comments = StoreComment.all.order(created_at: :asc)
   end
 
   # GET /store_comments/1 or /store_comments/1.json

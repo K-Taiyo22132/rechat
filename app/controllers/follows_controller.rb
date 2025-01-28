@@ -31,9 +31,9 @@ class FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
     @follow.user_id = current_user.id
     if @follow.save
-      redirect_to profile_path(@follow.followed_user_id)
+      redirect_to users_profile_path(user_id: @follow.followed_user_id)
     else
-      redirect_to profile_path(@follow.followed_user_id)
+      redirect_to users_profile_path(user_id: @follow.followed_user_id)
     end
   end
 
@@ -53,7 +53,7 @@ class FollowsController < ApplicationController
   # DELETE /follows/1 or /follows/1.json
   def destroy
     @follow.destroy
-    redirect_to profile_path(@follow.followed_user_id)
+    redirect_to users_profile_path(user_id: @follow.followed_user_id)
   end
 
   private

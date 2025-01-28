@@ -2,58 +2,79 @@
 
 <h1>フォロー中レビュー</h1>
 
-<table>
   <h3>商品レビュー</h3>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>商品画像</th>
-      <th>レビュー</th>
-      <th>価格</th>
-      <th>評価</th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="container mt-4">
+  <div class="row">
     <% @goods_reviews.each do |goods_review| %>
-      <tr>
-        <td><%= goods_review.title %></td>
-        <td><%= image_tag(url_for(image_of_goods_reviews_path(goods_review)),size:'100x100') %></td> 
-        <td><%= goods_review.review %></td>
-        <td><%= goods_review.price %></td>
-        <td><%= goods_review.evaluation %></td>
-      </tr>
+      <div class="col-md-4">
+        <a href="<%= goods_review_path(goods_review) %>" class="text-decoration-none">
+          <div class="card mb-4" style="cursor: pointer;">
+            <%= image_tag(url_for(image_of_goods_reviews_path(goods_review)), class: "card-img-top custom-image", style: "width: 100%; height: 80px; object-fit: contain;") %>
+            <div class="card-body">
+              <h5 class="card-title text-dark"><%= goods_review.title %></h5>
+              <%# <p class="card-text text-muted"> %>
+                <%# <%= truncate(goods_review.review, length: 200) %>
+              <%# </p> %>
+            </div>
+              <div class="card-footer text-muted">
+                <%= time_ago_in_words(goods_review.created_at) %> 前
+              </div>
+          </div>
+        </a>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<table>
+  </div>
+</div>
+
+
     <h3>店舗レビュー</h3>
 
-  <thead>
-    <tr>
-      <th>店舗名</th>
-      <th>店舗画像</th>
-      <th>場所</th>
-      <th>電話番号</th>
-      <th>レビュー</th>
-      <th>評価</th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="container mt-4">
+  <div class="row">
     <% @store_reviews.each do |store_review| %>
-      <tr>
-        <td><%= store_review.title %></td>
-        <td><%= image_tag(url_for(image_of_store_reviews_path(store_review)),size:'100x100') %></td>
-        <td><%= store_review.spot %></td>
-        <td><%= store_review.tell %></td>
-        <td><%= store_review.review %></td>
-        <td><%= store_review.evaluation %></td>
-      </tr>
+      <div class="col-md-4">
+        <a href="<%= store_review_path(store_review) %>" class="text-decoration-none">
+          <div class="card mb-4" style="cursor: pointer;">
+            <%= image_tag(url_for(image_of_store_reviews_path(store_review)), class: "card-img-top custom-image") %>
+            <div class="card-body">
+              <h5 class="card-title text-dark"><%= store_review.title %></h5>
+              <%# <p class="card-text text-muted"><%= truncate(store_review.review, length: 200) %>
+            </div>
+            <div class="card-footer text-muted">
+              <%= time_ago_in_words(store_review.created_at) %> 前
+            </div>
+          </div>
+        </a>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
+<style>
+  .card {
+    height: 200px;
+  }
+
+  .custom-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: 0.3s;
+  }
+</style>
 
 

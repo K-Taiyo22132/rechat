@@ -33,6 +33,7 @@
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
 <p><%= link_to '削除', unsubscribe_path(current_user), method: :delete, data: { confirm: '本当に削除しますか？' }%></p>
 <% end %>
+<% if current_user != @user %>
 <% if @follow.blank? %>
     <%= form_with(model: @follow_new) do |form| %>
         <%= form.hidden_field :followed_user_id, value: @user.id %>
@@ -43,4 +44,5 @@
   <div>
     <%= link_to 'フォロー解除', followunsubscribe_path(@follow.id), method: :delete, data: {confirm: '本当に削除しますか?'} %>
   </div>
+<% end %>
 <% end %>

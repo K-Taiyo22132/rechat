@@ -34,7 +34,7 @@
 <% end %>
 
 <% @goods_review.goods_comments.each do |goods_comment| %>
-  <%= image_tag(url_for(image_of_users_path(goods_comment.user_id)),size:'50x50') %>
+  <%= link_to image_tag(url_for(image_of_users_path(goods_comment.user_id)),size:'50x50'),users_profile_path(user_id: goods_comment.user_id) %>
   <p><%= goods_comment.user.name %><br><%= goods_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
   <p><%= goods_comment.comment %></P>
 <% end %>

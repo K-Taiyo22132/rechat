@@ -30,9 +30,9 @@ class UsersController < ApplicationController
   def profile
     @user = User.find(params[:user_id])
     @follow = nil
-    render 'show'
     @follow_new = Follow.new
     @follow = Follow.find_by(followed_user_id: @user.id, user_id: current_user.id)
+    render 'show'
   end
 
 

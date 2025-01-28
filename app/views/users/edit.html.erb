@@ -48,7 +48,10 @@
         <%= form.label :name, 'ユーザー名' %>
         <%= form.text_field :name, class: "form-control" %>
         <%= form.label :introduction, '紹介文' %>
-        <textarea class="form-control" id="floatingTextarea2" style="height:150px"></textarea>
+        <%= form.text_area :introduction,{class: "form-control",style:"height:150px"} %>
+        
+        
+        <%# <textarea class="form-control" id="floatingTextarea2" style="height:150px"></textarea> %>
 
         <br>
         <div class="d-grid gap-2">

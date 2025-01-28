@@ -1,7 +1,6 @@
 <div style="display: flex; align-items: center;">
-      <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px; font-size: 30px;" %>
+      <%= link_to "＜", :back, class: "back-button", style: "margin-right: 10px; font-size: 30px;" %>
     </div>
 
 <%= render 'form', goods_review: @goods_review %>
 
-<%= link_to 'Back', goods_reviews_path %>

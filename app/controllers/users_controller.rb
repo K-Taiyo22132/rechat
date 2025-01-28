@@ -75,17 +75,17 @@ class UsersController < ApplicationController
     end
     
     def user_params_update
-      params.require(:user).permit(:name, :profile_image)
+      params.require(:user).permit(:name,:introduction, :profile_image)
     end
 
     def user_update_attributes
       if user_params_update[:profile_image] == nil
        {
-         name: user_params_update[:name]
+         name: user_params_update[:name],introduction: user_params_update[:introduction]
        }
        else
        {
-        name: user_params_update[:name], profile_image: user_params_update[:profile_image].read
+        name: user_params_update[:name],introduction: user_params_update[:introduction], profile_image: user_params_update[:profile_image].read
        }
       end
     end

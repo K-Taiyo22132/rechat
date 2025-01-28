@@ -23,7 +23,9 @@
 
 
 <p>
-  <%= image_tag(url_for(image_of_store_reviews_path(@store_review)), style: "max-width: 100%; height: auto;") %>
+  <div class="image-container">
+    <%= image_tag(url_for(image_of_store_reviews_path(@store_review)), class: "img-fluid") %>
+  </div>
 </p>
 
 <h2>
@@ -64,4 +66,9 @@
   h3{
     font-size: 35px;
   }
+  .image-container {
+  max-width: 300px; /* 必要な幅に制限 */
+  margin: 0 auto;   /* センター配置（オプション） */
+}
+
 </style>

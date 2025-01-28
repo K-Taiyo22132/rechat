@@ -16,8 +16,8 @@
 <div class="swiper">
   <div class="swiper-wrapper">
     <% @select_categories.each do |category| %>
-      <div class="swiper-slide"><%=
-        link_to image_tag(url_for(image_of_categories_path(category.category_id)),size:'100x100'), groups_path(selectedcategory:category.category_id) %>
+      <div class="swiper-slide">        
+        <%= link_to image_tag(url_for(image_of_categories_path(category.category_id)),size:'100x100'), groups_path(selectedcategory:category.category_id) %>
         <%# image_tag(url_for(image_of_categories_path(category.category_id)),size: "100x100")%></div> 
     <% end %>
     </div>
@@ -70,7 +70,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= link_to image_tag(url_for(image_of_groups_path(group)),size:'70x70'), group %></td> 
-        <td><%= group.name %></td>
+        <td><%= link_to group.name,group %></td>
         <td><%= group.introduction %></td>
         
         <%# <td><%= link_to 'Edit', edit_group_path(group) %><%# </td>

@@ -1,12 +1,18 @@
+
+    <div class="fixed-top">
+      <div class=row>
+        <div class=col-md-2></div>
+        <div class=col-md-8>
+          
+             <h1>
+             <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
+                <%= @group.name %></h1>
+        </div>
+        <div class=col-md-2></div>
+      </div>
+    </div>
+
 <p id="notice"><%= notice %></p>
-<header>
-
-<div style="display: flex; align-items: center;">
-  <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
-  <h1><%= @group.name %></h1>
-</div>
-</header>
-
   <div id="current_user" data-user_id="<%= current_user.id %>"></div>
 
   <div id="messages" data-group_id="<%= @group.id %>">

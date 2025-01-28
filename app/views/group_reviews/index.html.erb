@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<div style="text-align: center;">
+ <div class="fixed-top">
+      <div class=row>
+        <div class=col-md-1></div>
+        <div class=col-md-2>
+          
+             <h1>
+             <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
+                
+        </div>
+        <div class=col-md-2></div>
+      </div>
+  </div>
 <h1>グループレビュー</h1>
 
     <%= form_tag(group_reviews_path,method: :get) do %>
@@ -132,8 +144,7 @@
 
 
 
-<%= link_to 'お店レビュー表示',store_reviews_path %>
-<%= link_to '商品レビュー表示',goods_reviews_path %>
+
 
 <%# <%= link_to 'New Group Review', new_group_review_path %> 
 <br>

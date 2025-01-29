@@ -1,20 +1,28 @@
 <p id="notice"><%= notice %></p>
+<h1 style="display: inline; margin-right: 10px;">
+  <%= link_to "＜", chats_path, class: "back-button", style: "font-size: 30px;" %>
+</h1>
+<h1 style="display: inline;">グループレビュー</h1>
+
 <div style="text-align: center;">
  <div class="fixed-top">
       <div class=row>
         <div class=col-md-1></div>
-        <div class=col-md-1>
+        <div class=col-md-2>
           
+<<<<<<< HEAD
              <h1>
              <%= link_to "＜", chats_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
              </h1>
+=======
+>>>>>>> ee65ca7e4867e2337a1f198bf431c385dc804bf2
                 
         </div>
         <div class=col-md-2></div>
       </div>
   </div>
-</div>
-<h1>グループレビュー</h1>
+  </div>
+
 
     <%= form_tag(group_reviews_path,method: :get) do %>
       

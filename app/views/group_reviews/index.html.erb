@@ -58,43 +58,53 @@
   </style>
       
  
+
 <h2>商品レビュー</h2>
 <div class="container mt-4">
   <div class="row">
     <% @goods_review.each do |goods_review| %>
       <div class="col-md-4">
-        <div class="card mb-4" style="cursor: pointer;">
-          <%= image_tag(url_for(image_of_goods_reviews_path(goods_review)), class: "card-img-top custom-image") %>
-          <div class="card-body">
-            <h5 class="card-title text-dark"><%= goods_review.title %></h5>
-            <p class="card-text text-muted"><%= truncate(goods_review.review, length: 100) %></p>
+        <%= link_to goods_review_path(goods_review) do %> <!-- リンク先を商品のレビュー詳細ページに設定 -->
+          <div class="card mb-4" style="cursor: pointer;">
+            <%= image_tag(url_for(image_of_goods_reviews_path(goods_review)), class: "card-img-top custom-image") %>
+            <div class="card-body">
+              <h5 class="card-title text-dark"><%= goods_review.title %></h5>
+              <p class="card-text text-muted"><%= truncate(goods_review.review, length: 100) %></p>
+            </div>
+            <div class="card-footer text-muted">
+              <%= time_ago_in_words(goods_review.created_at) %> 前
+            </div>
           </div>
-          <div class="card-footer text-muted">
-            <%= time_ago_in_words(goods_review.created_at) %> 前
-          </div>
-        </div>
-      </div>
-    <% end %>
-<br>
-
-<h2>お店レビュー</h2>
-<br>
-    <% @store_review.each do |store_review| %>
-      <div class="col-md-4">
-        <div class="card mb-4" style="cursor: pointer;">
-          <%= image_tag(url_for(image_of_store_reviews_path(store_review)), class: "card-img-top custom-image") %>
-          <div class="card-body">
-            <h5 class="card-title text-dark"><%= store_review.title %></h5>
-            <p class="card-text text-muted"><%= truncate(store_review.review, length: 100) %></p>
-          </div>
-          <div class="card-footer text-muted">
-            <%= time_ago_in_words(store_review.created_at) %> 前
-          </div>
-        </div>
+        <% end %> <!-- link_toの終了 -->
       </div>
     <% end %>
   </div>
 </div>
+
+<br>
+
+<h2>お店レビュー</h2>
+<div class="container mt-4">
+  <div class="row">
+    <% @store_review.each do |store_review| %>
+      <div class="col-md-4">
+        <%= link_to store_review_path(store_review) do %> <!-- リンク先をお店のレビュー詳細ページに設定 -->
+          <div class="card mb-4" style="cursor: pointer;">
+            <%= image_tag(url_for(image_of_store_reviews_path(store_review)), class: "card-img-top custom-image") %>
+            <div class="card-body">
+              <h5 class="card-title text-dark"><%= store_review.title %></h5>
+              <p class="card-text text-muted"><%= truncate(store_review.review, length: 100) %></p>
+            </div>
+            <div class="card-footer text-muted">
+              <%= time_ago_in_words(store_review.created_at) %> 前
+            </div>
+          </div>
+        <% end %> <!-- link_toの終了 -->
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <style>
   .card {
@@ -132,8 +142,6 @@
 
 
 
-<%= link_to 'お店レビュー表示',store_reviews_path %>
-<%= link_to '商品レビュー表示',goods_reviews_path %>
 
 <%# <%= link_to 'New Group Review', new_group_review_path %> 
 <br>

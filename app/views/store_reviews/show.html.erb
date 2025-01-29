@@ -50,9 +50,8 @@
 
 <% @store_review.store_comments.each do |store_comment| %>
   <%# <%= image_tag(url_for(image_of_store_reviews_path(@store_review)),size: '100x100') %>
-  <%= image_tag(url_for(image_of_users_path(store_comment.user_id)),size:'50x50') %>
-  <p><%= store_comment.user.name %></P>
-  <p><%= store_comment.created_at.strftime('%Y/%m/%d/%t %H:%M:%S') %></P>
+  <%= link_to image_tag(url_for(image_of_users_path(store_comment.user_id)),size:'50x50'),users_profile_path(user_id: store_comment.user_id) %>
+  <p><%= store_comment.user.name %><br><%= store_comment.created_at.strftime('%Y年%m月%d日%t %H時%M分%S秒') %></P>
   <p><%= simple_format(store_comment.comment) %></P>
   
 <% end %>

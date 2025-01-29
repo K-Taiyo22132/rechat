@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="row"style=margin-bottom:110px>
   <div class="row">
     <% Category.all.each_with_index do |category,i|%>
 
@@ -41,4 +41,5 @@
   <div class="d-grid gap-2">
       <%= form.submit '登録',class: "btn btn-primary" %>
   </div>
+</div>
 <% end %>

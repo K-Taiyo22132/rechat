@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "＜", group_reviews_path, class: "back-button", style: "margin-right: 10px; font-size: 30px;" %>
-    
-<h1>投稿選択</h1>
+<%= link_to "＜", group_reviews_path, class: "back-button", style: "font-size: 30px; margin-right: 10px; vertical-align: middle;" %> <h1 style="display: inline; vertical-align: middle;">投稿選択</h1>
+
 </div>
+<br><br><br><br><br><br><br><br>
 
 <table>
   <thead>
@@ -28,6 +28,47 @@
 
 <br>
 
-<%= link_to 'お店', new_store_review_path %>
-<%= link_to '商品', new_goods_review_path %>
+<div class="card-container">
+  <div class="card">
+    <h3 class="card-title">お店</h3>
+    <%= link_to new_store_review_path do %>
+      <%= image_tag '/images/shop.png', size: "200x200" %>
+    <% end %>
+  </div>
+  <div class="card">
+    <h3 class="card-title">商品</h3>
+    <%= link_to new_goods_review_path do %>
+      <%= image_tag '/images/goods.png', size: "200x200" %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+.card-container {
+  display: flex;
+  justify-content: space-between; /* 均等割り付け */
+  gap: 20px; /* カード間の隙間 */
+  flex-wrap: wrap; /* 画面幅に応じてカードを折り返す */
+  margin: 0 50px; /* 左右に余白を追加 */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px; /* 角を丸くする */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードの影 */
+  padding: 20px;
+  text-align: center; /* アイテムを中央寄せ */
+  width: calc(50% - 30px); /* 画面幅に応じてカードのサイズを調整、左右に余白を考慮 */
+  max-width: 250px; /* 最大幅 */
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 100%;
+  height: auto; /* 画像の比率を保つ */
+  border-radius: 8px; /* 画像の角を丸くする */
+}
+
+</style>
+
 <%# <%= link_to 'New Select Review', new_select_review_path %>

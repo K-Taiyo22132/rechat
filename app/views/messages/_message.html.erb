@@ -9,7 +9,8 @@
     users_profile_path(user_id: message.user.id)
   ) %>
 </p>
-<p class="<%= message.id %>" style="font-size: 16px;"><%= safe_join(customize(message.message),tag(:br)) %></p>
+<p class="<%= message.id %>" style="font-size: 16px;">
+<span class="<%= message.id %>"><%= safe_join(customize(message.message),tag(:br)) %></span></p>
 
 <p class="<%= message.id %>" style="font-size: 16px;" %><%= message.created_at.strftime("%H:%M") %></p>
 
@@ -20,6 +21,7 @@
 
     if (message == current_user){
         $('p.' + <%= message.id %>).css('text-align', 'right');
+        $('span.' + <%= message.id %>).css('display', 'inline-block').css('text-align', 'left');
     }else{
         $('p.' + <%= message.id %>).css('text-align', 'left');
     }

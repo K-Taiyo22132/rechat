@@ -1,5 +1,14 @@
-<h2>グループ作成</h2>
+<div style="display: flex; align-items: center;">
+      <%= link_to "＜", :back, class: "back-button", style: "margin-right: 10px; font-size: 30px;" %>
+    </div><h2>グループ作成</h2>
 
 <%= render 'form', group: @group %>
 
 <%= link_to 'Back', :back %>
+
+    <style>
+        h2 {
+            text-align: center;
+            font-size: 35px;
+        }
+    </style>

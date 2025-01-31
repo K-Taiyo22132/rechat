@@ -64,9 +64,11 @@
               <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
             <%end%>
             
+
+        
         <div class="field">
-            <%= form.label :introduction %>
-            <%= form.text_area :introduction %>
+          <%= form.label :introduction, '紹介文' %>
+          <%= form.text_area :introduction,{class: "form-control",style:"height:150px"} %>
         </div>
   </div>
 

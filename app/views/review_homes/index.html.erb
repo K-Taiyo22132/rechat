@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
-
-<h1> レビューホーム</h1>
-
+<div style="display: flex; align-items: center;">
+  <%= link_to "＜", review_homes_path, class: "back-button", style: "margin-right: 10px;" "font-size: 30px;" %>
+  <h1> レビューホーム</h1>   
+</div>
   <%= form_tag(review_homes_path,method: :get) do %>
       
       <%= text_field_tag "search[keyword]",nil,placeholder: "🔍 検索",class: "form-control" %>

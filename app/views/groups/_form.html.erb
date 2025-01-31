@@ -1,10 +1,7 @@
 <%= form_with(model: group) do |form| %>
   <% if group.errors.any? %>
-  
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-        <div class="container text-center">
-  
       <ul>
         <% group.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,75 +9,63 @@
       </ul>
     </div>
   <% end %>
-  
 
-  
-
-  <div class="row">
-       
-        <div class="col-md-8 border text-center">
-              <div class="field">
-                 <%= form.label :name %>
-                 <%= form.text_field :name %>  
-              </div>  
-            <div id="img"></div>
-            <script>
-            // 選択した画像ファイルのプレビューを生成する関数を定義します。
-                function preview(obj) {
-                
-                // 選択した全てのファイルに対してループ処理をします。
-                for (i = 0; i < obj.files.length; i++) {
-                    // FileReaderオブジェクトを作成します。これによりブラウザ上でファイルを読み込むことが可能になります。
-                    let fileReader = new FileReader();
-                    // onloadイベントハンドラを設定します。ファイルが正常に読み込まれたときに呼び出されます。
-                    fileReader.onload = ((e)=> {
-                        // 読み込んだ画像ファイルをData URLとしてimg要素に設定します。
-                        // これにより、選択した画像がブラウザ上でプレビュー表示されます。
-                        document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '"  width="200" height="200" class="rounded-circle border">';
-                    <% if group.group_image.nil? %>
-                      kamera = document.getElementById("kamera");
-                      kamera.style.display = 'none';
-                    <% else %>
-                      aikon = document.getElementById("aikon");
-                      aikon.style.display = 'none';
-                    <% end %>
-                    });
-                    
-                    // ファイルをData URLとして読み込みます。
-                    fileReader.readAsDataURL(obj.files[i]);
-                    }
-                }
-            </script>
-            <%= form.label :group_image , "アイコンを選択", class: "btn btn--form" %>
-            <%if group.group_image.nil?%> 
-              
-            
-              <div class = "col-md-6">
-                 <%= image_tag '/images/railskame.jpg',size:'150x110',id:"kamera" %>
-              </div> 
-              <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
-            <%else%> 
-              <%= image_tag(url_for(image_of_groups_path(@group)),size: '100x100',id:"aikon") %>
-              <%= form.file_field :group_image , :size=>"40", class: "form_file" ,onchange:"preview(this);" %>
-            <%end%>
-            
 
         
-        <div class="field">
-          <%= form.label :introduction, '紹介文' %>
-          <%= form.text_area :introduction,{class: "form-control",style:"height:150px"} %>
+        <div class="form-group mb-3">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, placeholder: "グループの名前を入力してください", class: "form-control" %>
         </div>
-  </div>
+        
+        <div class="mb-3">
+          <div id="img" class="text-center">
+            <%= form.label :group_image, "アイコンを選択", class: "btn btn-outline-primary" %>
+            <% if group.group_image.nil? %>
+              <div class="mb-3">
+                <%= image_tag '/images/railskame.jpg', size: '150x110', id: "kamera" %>
+              </div>
+              <%= form.file_field :group_image, class: "form-control", onchange: "preview(this);" %>
+            <% else %>
+              <div class="mb-3">
+                <%= image_tag(url_for(image_of_groups_path(@group)), size: '100x100', id: "aikon") %>
+              </div>
+              <%= form.file_field :group_image, class: "form-control", onchange: "preview(this);" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="field mb-3">
+          <%= form.label :introduction, '紹介文', class: "form-label" %>
+          <%= form.text_area :introduction, class: "form-control", style: "height:150px;" %>
+        </div>
+        
+        <div class="field mb-3">
+          <%= form.label :category_id, class: "form-label" %>
+          <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {}, class: "form-select" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id]} %> 
-  </div> 
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+        <div class="actions text-center">
+          <%= form.submit '保存', class: "btn btn-primary" %>
+        </div>
+
+      </div>
+      
+    </div>
+
+  <script>
+    function preview(obj) {
+      for (i = 0; i < obj.files.length; i++) {
+        let fileReader = new FileReader();
+        fileReader.onload = (e) => {
+          document.querySelector('#img').innerHTML = '<img src="' + e.target.result + '" width="200" height="200" class="rounded-circle border">';
+        };
+        fileReader.readAsDataURL(obj.files[i]);
+      }
+    }
+  </script>
+
 <% end %>
+
 
 
 

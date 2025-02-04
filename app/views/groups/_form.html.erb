@@ -44,9 +44,10 @@
           <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {}, class: "form-select" %>
         </div>
 
-        <div class="actions text-center">
-          <%= form.submit '保存', class: "btn btn-primary" %>
-        </div>
+<div class="actions text-center">
+  <%= form.submit '保存', class: "btn btn-primary btn-block" %>
+</div>
+
 
       </div>
       

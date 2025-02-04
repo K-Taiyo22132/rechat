@@ -23,7 +23,7 @@
       <div class="col-md-4 text-center">
         <input type="checkbox" id="select_category_category_id_<%= i %>" name="select_category[category_id][]" value="<%= category.id %>" class="selected_category_image" <%= checked %>>
         <label for="select_category_category_id_<%= i %>" class="selected_category_image">
-          <%= image_tag(url_for(image_of_categories_path(category)),size: '100x100') %>
+          <%= image_tag(url_for(image_of_categories_path(category)),:size=>'150x100') %>
         </label>
         <%= category.name %>
       </div>

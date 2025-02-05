@@ -28,8 +28,13 @@
   <strong>評価:</strong>
   <%= @goods_review.evaluation %>
 </h3>
-<%= link_to 'Edit', edit_goods_review_path(@goods_review) %> |
-<%= link_to 'Back', goods_reviews_path %>
+
+<% if current_user == @user %>
+<div style="text-align: right;">
+  <%= link_to 'Edit', edit_goods_review_path(@goods_review) %>
+</div>
+<% end %>
+
 
 
 

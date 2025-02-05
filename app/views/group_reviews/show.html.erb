@@ -25,5 +25,9 @@
   <%= @group_review.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_group_review_path(@group_review) %> |
-<%= link_to 'Back', group_reviews_path %>
+
+<% if current_user == @user %>
+<div style="text-align: right;">
+  <%= link_to '編集する', edit_group_review_path(@group_review) %>
+</div>
+<% end%>
